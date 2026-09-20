@@ -1,388 +1,1994 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xyronix OS Hub - İşletim Sistemi ve Yazılım Projeleri</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #0b0f19; color: #c9d1d9; line-height: 1.6; background-image: radial-gradient(circle at 50% 0%, #161b22 0%, #0b0f19 70%); min-height: 100vh; }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Xyronix OS Hub — İşletim Sistemi ve Yazılım Projeleri | Xyronix Studios</title>
+  <meta name="description" content="Xyronix Studios tarafından geliştirilen Jubatus OS, Jubatus Lite, Solara OS, Jubatus Hurd, Jubatus Jedi ve Xyronix Backup V3 Pro gibi işletim sistemi ve yazılım projelerinin arşivi.">
+  <link rel="canonical" href="https://xyronixstudios.com/">
 
-        header { background: rgba(22, 27, 34, 0.8); backdrop-filter: blur(10px); padding: 3rem 1rem; text-align: center; border-bottom: 1px solid #30363d; position: sticky; top: 0; z-index: 100; }
-        .main-logo { width: 90px; height: 90px; object-fit: contain; margin-bottom: 1rem; border-radius: 50%; border: 2px solid #58a6ff; padding: 5px; background: #ffffff; box-shadow: 0 0 20px rgba(88, 166, 255, 0.3); }
-        header h1 { font-size: 2.5rem; color: #58a6ff; margin-bottom: 0.5rem; letter-spacing: 1px; }
-        header p { color: #8b949e; font-size: 1.1rem; }
+  <meta property="og:title" content="Xyronix OS Hub — İşletim Sistemi ve Yazılım Projeleri">
+  <meta property="og:description" content="Xyronix Studios tarafından geliştirilen işletim sistemi ve yazılım projeleri arşivi.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xyronixstudios.com/">
+  <meta property="og:locale" content="tr_TR">
+  <meta name="theme-color" content="#0b0f19">
 
-        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        /* Hakkımızda & Maskot Bölümü */
-        .about-wrapper { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center; margin-bottom: 3rem; }
-        .about-section { flex: 1; min-width: 300px; background: rgba(22, 27, 34, 0.7); backdrop-filter: blur(10px); border: 1px solid #30363d; border-radius: 12px; padding: 2rem; text-align: left; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-        .about-section h2 { color: #58a6ff; margin-bottom: 1rem; font-size: 2rem; }
-        .about-section p { color: #8b949e; font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; }
+  <style>
+    /* ==================== DEĞİŞKENLER (KOYU TEMA - VARSAYILAN) ==================== */
+    :root {
+      --bg: #0b0f19;
+      --bg-surface: #111827;
+      --bg-surface-2: #161b22;
+      --bg-card: #1a202c;
+      --border: #30363d;
+      --border-light: #21262d;
+      --text: #c9d1d9;
+      --text-muted: #8b949e;
+      --text-light: #6e7681;
+      --text-heading: #ffffff;
+      --accent: #58a6ff;
+      --accent-hover: #1f6feb;
+      --accent-green: #238636;
+      --accent-green-hover: #2ea043;
+      --accent-red: #da3633;
+      --accent-purple: #8957e5;
+      --accent-amber: #d29922;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.3);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.4);
+      --font: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      --header-height: 72px;
+      --subnav-height: 56px;
+      --header-bg: rgba(11,15,25,0.85);
+      --subnav-bg: rgba(11,15,25,0.75);
+      --gradient-body: radial-gradient(circle at 50% 0%, #161b22 0%, #0b0f19 70%);
+      --logo-filter: none;
+    }
 
-        .mascot-card { background: rgba(22, 27, 34, 0.7); backdrop-filter: blur(10px); border: 1px solid #30363d; border-radius: 12px; padding: 1.5rem; text-align: center; width: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-        .mascot-img { width: 130px; height: 130px; object-fit: contain; background: #ffffff; border-radius: 50%; padding: 8px; border: 2px solid #58a6ff; margin-bottom: 1rem; box-shadow: 0 0 15px rgba(88, 166, 255, 0.2); }
-        .mascot-title { color: #58a6ff; font-weight: bold; font-size: 1.2rem; margin-bottom: 0.3rem; }
-        .mascot-desc { color: #8b949e; font-size: 0.85rem; }
+    /* ==================== AÇIK TEMA ==================== */
+    [data-theme="light"] {
+      --bg: #f5f7fa;
+      --bg-surface: #ffffff;
+      --bg-surface-2: #ffffff;
+      --bg-card: #ffffff;
+      --border: #e1e4e8;
+      --border-light: #eaecef;
+      --text: #24292e;
+      --text-muted: #586069;
+      --text-light: #8b949e;
+      --text-heading: #0d1117;
+      --accent: #1f6feb;
+      --accent-hover: #0969da;
+      --accent-green: #1a7f37;
+      --accent-green-hover: #2ea043;
+      --accent-red: #cf222e;
+      --accent-purple: #8250df;
+      --accent-amber: #9a6700;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
+      --header-bg: rgba(255,255,255,0.85);
+      --subnav-bg: rgba(255,255,255,0.75);
+      --gradient-body: radial-gradient(circle at 50% 0%, #ffffff 0%, #f5f7fa 70%);
+      --logo-filter: invert(1);
+    }
 
-        /* Sosyal Medya Butonları */
-        .social-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem; }
-        .social-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: #21262d; color: #c9d1d9; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; border: 1px solid #30363d; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; }
-        .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
-        .social-btn:hover { background: #30363d; border-color: #58a6ff; color: #58a6ff; transform: translateY(-2px); }
-        .btn-youtube:hover { color: #ff0000; border-color: #ff0000; }
-        .btn-tiktok:hover { color: #fe2c55; border-color: #fe2c55; }
-        .btn-instagram:hover { color: #e1306c; border-color: #e1306c; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + var(--subnav-height) + 20px); }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      min-height: 100vh;
+      background-image: var(--gradient-body);
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; color: inherit; }
 
-        /* Bölüm Başlıkları */
-        .section-title { color: #58a6ff; font-size: 2rem; margin: 3rem 0 1.5rem 0; padding-bottom: 0.5rem; border-bottom: 1px solid #30363d; display: flex; align-items: center; gap: 10px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; }
+    .section--surface { background: var(--bg-surface); transition: background 0.3s ease; }
+    .section-header { text-align: center; max-width: 800px; margin: 0 auto 48px; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 16px; color: var(--text-heading); }
+    .section-subtitle { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; }
 
-        /* OS ve Yazılım Grid */
-        .os-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-        .os-card { background: rgba(22, 27, 34, 0.7); backdrop-filter: blur(10px); border: 1px solid #30363d; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; cursor: pointer; position: relative; overflow: hidden; }
-        .os-card:hover { transform: translateY(-6px); border-color: #58a6ff; box-shadow: 0 10px 30px rgba(88, 166, 255, 0.15); }
-        .os-img { width: 100%; height: 150px; object-fit: contain; background: #ffffff; border-radius: 8px; margin-bottom: 1rem; padding: 10px; border: 1px solid #30363d; }
-        .os-img-lite { width: 100%; height: 150px; object-fit: contain; background: #ffffff; border-radius: 8px; margin-bottom: 1rem; padding: 5px; border: 1px solid #30363d; }
+    .pill-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .pill-blue { background: rgba(88,166,255,0.15); color: var(--accent); }
+    .pill-green { background: rgba(35,134,54,0.15); color: #3fb950; }
+    .pill-red { background: rgba(218,54,51,0.15); color: #f85149; }
+    .pill-purple { background: rgba(137,87,229,0.15); color: #a371f7; }
+    .pill-amber { background: rgba(210,153,34,0.15); color: #d29922; }
 
-        .os-card h2 { color: #58a6ff; margin-bottom: 0.5rem; font-size: 1.7rem; }
-        .os-card .tag { display: inline-block; background: #21262d; color: #7ee787; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.85rem; margin-bottom: 1rem; border: 1px solid #30363d; }
-        .os-card .tag-experimental { color: #f85149; background: #21262d; border-color: #f85149; }
-        .os-card .tag-tool { color: #58a6ff; background: #21262d; border-color: #58a6ff; }
-        .os-card p { color: #8b949e; margin-bottom: 1.5rem; }
-        .features { list-style: none; margin-bottom: 1.5rem; }
-        .features li { padding: 0.3rem 0; color: #c9d1d9; font-size: 0.95rem; }
-        .features li::before { content: "✔ "; color: #238636; font-weight: bold; }
+    /* ==================== HEADER ==================== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--header-bg);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light);
+      height: var(--header-height);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--text-heading);
+      flex-shrink: 0;
+    }
+    .brand__img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: var(--radius-full);
+      border: 2px solid var(--accent);
+      padding: 4px;
+      background: #fff;
+      box-shadow: 0 0 16px rgba(88,166,255,0.3);
+      transition: all 0.3s ease;
+    }
+    /* Koyu temada logo siyah zeminli olduğu için beyaz arka plan kalır,
+       Açık temada logo beyaz olacağı için ters çevrilir ve arka plan koyu olur */
+    [data-theme="light"] .brand__img {
+      background: var(--bg-card);
+      box-shadow: 0 0 16px rgba(31,111,235,0.2);
+    }
 
-        .card-hint { text-align: center; background: #21262d; color: #58a6ff; padding: 0.75rem; border-radius: 6px; font-weight: bold; border: 1px solid #30363d; transition: background 0.2s, color 0.2s; }
-        .os-card:hover .card-hint { background: #1f6feb; color: white; border-color: #1f6feb; }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 4px;
+    }
+    .nav-links a {
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent);
+      background: rgba(88,166,255,0.08);
+    }
+    .header__actions { display: flex; align-items: center; gap: 8px; }
 
-        /* Modal Tasarımı */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 1000; justify-content: center; align-items: center; padding: 1.5rem; overflow-y: auto; }
-        .modal-content { background: #161b22; border: 1px solid #30363d; border-radius: 16px; max-width: 950px; width: 100%; max-height: 92vh; overflow-y: auto; padding: 2.5rem; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.6); animation: modalIn 0.3s ease; margin: auto; }
-        @keyframes modalIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        .modal-close { position: sticky; top: 0; float: right; background: #21262d; color: #c9d1d9; border: 1px solid #30363d; width: 38px; height: 38px; border-radius: 50%; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; z-index: 10; margin-bottom: 1rem; }
-        .modal-close:hover { background: #da3633; color: white; border-color: #da3633; }
+    /* ==================== DİL SEÇİCİ ==================== */
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      background: var(--bg-surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 3px;
+      gap: 2px;
+      transition: all 0.3s ease;
+    }
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      transition: all 0.2s;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    .lang-btn:hover { color: var(--accent); }
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(88,166,255,0.3);
+    }
 
-        .modal-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; clear: both; }
-        .modal-header img { width: 60px; height: 60px; object-fit: contain; background: #fff; padding: 5px; border-radius: 8px; }
-        .modal-header h2 { color: #58a6ff; font-size: 2rem; }
+    /* ==================== TEMA DEĞİŞTİRİCİ ==================== */
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      background: var(--bg-surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      background: var(--bg-card);
+      transform: rotate(15deg);
+    }
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--text);
+      transition: all 0.2s;
+    }
+    .theme-toggle .icon-sun { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+    [data-theme="light"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: none; }
 
-        .modal-screenshot-container { width: 100%; background: #0d1117; border-radius: 10px; border: 1px solid #30363d; overflow: hidden; margin-bottom: 1.5rem; display: flex; justify-content: center; align-items: center; padding: 10px; }
-        .modal-screenshot { width: 100%; height: auto; max-height: 550px; object-fit: contain; border-radius: 6px; display: block; }
+    /* ==================== BUTONLAR ==================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.92rem;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .btn--primary { background: var(--accent); color: #fff; }
+    .btn--primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(88,166,255,0.4); }
+    .btn--outline { background: transparent; border-color: var(--border); color: var(--text); }
+    .btn--outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(88,166,255,0.05); }
+    .btn--green { background: var(--accent-green); color: #fff; }
+    .btn--green:hover { background: var(--accent-green-hover); transform: translateY(-1px); }
+    .btn--sm { padding: 8px 18px; font-size: 0.85rem; }
 
-        .modal-body h3 { color: #58a6ff; margin: 1.5rem 0 0.6rem 0; font-size: 1.35rem; border-bottom: 1px solid #21262d; padding-bottom: 0.3rem; }
-        .modal-body p { color: #8b949e; line-height: 1.8; margin-bottom: 1rem; font-size: 1.02rem; }
-        .modal-body ul { list-style: disc; margin-left: 1.5rem; color: #c9d1d9; margin-bottom: 1rem; }
-        .modal-body li { margin-bottom: 0.5rem; font-size: 1rem; }
+    /* ==================== SUB-NAV ==================== */
+    .subnav-wrapper {
+      position: sticky;
+      top: var(--header-height);
+      z-index: 90;
+      background: var(--subnav-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+      transition: background 0.3s ease;
+    }
+    .subnav-wrapper::-webkit-scrollbar { display: none; }
+    .subnav-pill {
+      display: flex;
+      gap: 4px;
+      background: var(--bg-surface-2);
+      padding: 6px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .subnav-link {
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .subnav-link:hover, .subnav-link.active {
+      color: #fff;
+      background: var(--accent);
+    }
 
-        .modal-download-btn { display: inline-block; background: #238636; color: white; padding: 0.85rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.05rem; margin-top: 1.5rem; transition: background 0.2s, transform 0.2s; border: 1px solid #2ea043; box-shadow: 0 4px 12px rgba(35, 134, 54, 0.3); }
-        .modal-download-btn:hover { background: #2ea043; transform: translateY(-2px); }
+    /* ==================== HERO ==================== */
+    .hero { padding: 60px 0 80px; text-align: center; }
+    .hero__headline h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.15; color: var(--text-heading); margin-bottom: 24px; }
+    .hero__subtext { font-size: 1.15rem; color: var(--text-muted); max-width: 780px; margin: 0 auto 32px; line-height: 1.8; }
+    .hero__cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
 
-        footer { text-align: center; padding: 2.5rem; margin-top: 4rem; background: rgba(22, 27, 34, 0.8); border-top: 1px solid #30363d; color: #8b949e; font-size: 0.9rem; }
-    </style>
+    /* ==================== MASKOT & HAKKIMIZDA ==================== */
+    .about-wrapper { display: flex; flex-wrap: wrap; gap: 32px; align-items: stretch; justify-content: center; margin-bottom: 64px; }
+    .about-section {
+      flex: 1; min-width: 300px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      text-align: left;
+      box-shadow: var(--shadow-md);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .about-section h2 { color: var(--accent); margin-bottom: 16px; font-size: 1.8rem; }
+    .about-section p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 24px; }
+
+    .mascot-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      text-align: center;
+      width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .mascot-img {
+      width: 140px; height: 140px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: var(--radius-full);
+      padding: 10px;
+      border: 3px solid var(--accent);
+      margin-bottom: 20px;
+      box-shadow: 0 0 24px rgba(88,166,255,0.25);
+    }
+    [data-theme="light"] .mascot-img { background: var(--bg-surface); }
+    .mascot-title { color: var(--accent); font-weight: 800; font-size: 1.4rem; margin-bottom: 6px; }
+    .mascot-desc { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* ==================== SOSYAL MEDYA ==================== */
+    .social-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface-2);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
+    .social-btn:hover { background: var(--bg-surface); border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .btn-youtube:hover { color: #ff0000; border-color: #ff0000; }
+    .btn-tiktok:hover { color: #fe2c55; border-color: #fe2c55; }
+    .btn-instagram:hover { color: #e1306c; border-color: #e1306c; }
+
+    /* ==================== PROJE KARTLARI ==================== */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .project-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: var(--shadow-lg); }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-img {
+      width: 100%; height: 160px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: var(--radius-md);
+      margin-bottom: 16px;
+      padding: 12px;
+      border: 1px solid var(--border);
+    }
+    [data-theme="light"] .project-img { background: var(--bg-surface); }
+    .project-img-lite { padding: 6px; }
+
+    .project-card h3 { color: var(--text-heading); font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+    .project-card .tag {
+      display: inline-block;
+      background: var(--bg-surface-2);
+      color: #3fb950;
+      padding: 3px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+    }
+    .tag-experimental { color: #f85149 !important; border-color: #f85149 !important; }
+    .tag-tool { color: var(--accent) !important; border-color: var(--accent) !important; }
+    .tag-jedi { color: var(--accent-purple) !important; border-color: var(--accent-purple) !important; }
+
+    .project-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; flex-grow: 1; }
+    .features { list-style: none; margin-bottom: 20px; }
+    .features li { padding: 4px 0; color: var(--text); font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+    .features li::before { content: "✔"; color: var(--accent-green-hover); font-weight: bold; }
+
+    .card-hint {
+      text-align: center;
+      background: var(--bg-surface-2);
+      color: var(--accent);
+      padding: 12px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      transition: background 0.2s, color 0.2s;
+    }
+    .project-card:hover .card-hint { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* ==================== MODAL ==================== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      overflow-y: auto;
+    }
+    [data-theme="light"] .modal-overlay { background: rgba(0,0,0,0.5); }
+    .modal-overlay.active { display: flex; }
+
+    .modal-content {
+      background: var(--bg-surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 40px;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+    .modal-close {
+      position: sticky;
+      top: 0;
+      float: right;
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      width: 40px; height: 40px;
+      border-radius: var(--radius-full);
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      z-index: 10;
+      margin-bottom: 16px;
+    }
+    .modal-close:hover { background: var(--accent-red); color: #fff; border-color: var(--accent-red); }
+
+    .modal-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; clear: both; }
+    .modal-header img { width: 64px; height: 64px; object-fit: contain; background: #fff; padding: 6px; border-radius: var(--radius-md); }
+    [data-theme="light"] .modal-header img { background: var(--bg-surface); }
+    .modal-header h2 { color: var(--text-heading); font-size: 1.8rem; }
+
+    .modal-screenshot-container {
+      width: 100%;
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+    }
+    .modal-screenshot { width: 100%; height: auto; max-height: 500px; object-fit: contain; border-radius: var(--radius-sm); }
+
+    .modal-body h3 { color: var(--accent); margin: 24px 0 12px; font-size: 1.25rem; border-bottom: 1px solid var(--border-light); padding-bottom: 6px; }
+    .modal-body p { color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; font-size: 1rem; }
+    .modal-body ul { list-style: disc; margin-left: 24px; color: var(--text); margin-bottom: 16px; }
+    .modal-body li { margin-bottom: 8px; font-size: 0.98rem; }
+    .modal-body code {
+      background: var(--bg);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+      color: var(--accent);
+    }
+
+    .modal-download-btn {
+      display: inline-block;
+      background: var(--accent-green);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-top: 24px;
+      transition: all 0.2s;
+      border: 1px solid var(--accent-green-hover);
+      box-shadow: 0 4px 16px rgba(35,134,54,0.3);
+    }
+    .modal-download-btn:hover { background: var(--accent-green-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(35,134,54,0.4); }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+      text-align: center;
+      padding: 48px 24px;
+      margin-top: 64px;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      transition: background 0.3s ease;
+    }
+    .footer a { color: var(--accent); }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ==================== MOBİL MENÜ ==================== */
+    .menu-toggle-btn {
+      display: none;
+      width: 40px; height: 40px;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface-2);
+      border: 1px solid var(--border);
+    }
+    .menu-toggle-btn svg { width: 24px; height: 24px; fill: var(--text); }
+
+    .mobile-menu-scrim {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 200;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .mobile-menu-scrim.active { display: block; opacity: 1; }
+
+    .mobile-menu-drawer {
+      position: fixed;
+      top: 0; right: 0;
+      width: 320px;
+      max-width: 85vw;
+      height: 100vh;
+      background: var(--bg-surface-2);
+      border-left: 1px solid var(--border);
+      z-index: 210;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+      overflow-y: auto;
+      padding: 24px;
+    }
+    .mobile-menu-drawer.active { transform: translateX(0); }
+
+    .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+    .mobile-menu-close-btn {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-full);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+    }
+    .mobile-menu-close-btn svg { width: 20px; height: 20px; fill: var(--text); }
+
+    .mobile-menu-section { margin-bottom: 28px; }
+    .mobile-menu-section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      padding-left: 8px;
+    }
+    .mobile-menu-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-menu-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    .mobile-menu-link:hover { background: var(--bg-card); color: var(--accent); }
+    .mobile-menu-link svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+
+    .mobile-menu-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+
+    /* Mobil menüde dil seçici */
+    .mobile-lang-switch {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .mobile-lang-switch .lang-btn {
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      font-size: 0.8rem;
+    }
+    .mobile-lang-switch .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 1200px) {
+      .nav-links { display: none; }
+      .menu-toggle-btn { display: flex; }
+      .about-wrapper { flex-direction: column; align-items: center; }
+      .mascot-card { width: 100%; max-width: 400px; }
+    }
+    @media (max-width: 900px) {
+      .lang-switch { display: none; }
+    }
+    @media (max-width: 640px) {
+      .section { padding: 48px 0; }
+      .hero { padding: 40px 0 56px; }
+      .hero__cta { flex-direction: column; align-items: stretch; }
+      .hero__cta .btn { justify-content: center; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .modal-content { padding: 24px; }
+      .modal-header { flex-direction: column; text-align: center; }
+      .modal-header h2 { font-size: 1.4rem; }
+      .subnav-pill { gap: 2px; }
+      .subnav-link { padding: 6px 14px; font-size: 0.8rem; }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <img src="Xyronix-OS-Logo.png" alt="Xyronix Studios Logo" class="main-logo">
-        <h1>Xyronix OS Hub</h1>
-        <p>Xyronix Studios tarafından geliştirilen işletim sistemi ve yazılım projeleri arşivi</p>
-    </header>
+  <!-- ==================== HEADER ==================== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="brand">
+        <!-- KOYU TEMADA: Xyronix-OS-Logo-Black.png -->
+        <!-- AÇIK TEMADA: Xyronix-OS-Logo-White.png (JS ile değiştirilir) -->
+        <img src="Xyronix-OS-Logo-Black.png" alt="Xyronix Studios Logo" class="brand__img" id="brandLogo">
+        <span>Xyronix OS Hub</span>
+      </a>
 
+      <nav aria-label="Ana Menü">
+        <ul class="nav-links">
+          <li><a href="#hakkimizda" class="active" data-i18n="nav_about">Hakkımızda</a></li>
+          <li><a href="#isletim-sistemleri" data-i18n="nav_os">İşletim Sistemleri</a></li>
+          <li><a href="#yazilim-araclari" data-i18n="nav_tools">Yazılım Araçları</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <!-- ==================== DİL SEÇİCİ ==================== -->
+        <div class="lang-switch" role="group" aria-label="Dil Seçimi">
+          <button class="lang-btn active" data-lang="tr" title="Türkçe">TR</button>
+          <button class="lang-btn" data-lang="en" title="English">EN</button>
+          <button class="lang-btn" data-lang="fr" title="Français">FR</button>
+          <button class="lang-btn" data-lang="de" title="Deutsch">DE</button>
+          <button class="lang-btn" data-lang="az" title="Azərbaycan dili">AZ</button>
+        </div>
+
+        <!-- ==================== TEMA DEĞİŞTİRİCİ ==================== -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Tema Değiştir" title="Tema Değiştir">
+          <svg class="icon-moon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5l2 3h-4l2-3zm0 20l-2-3h4l-2 3zM4.22 4.22l3.54 1.06-2.48 2.48-1.06-3.54zm15.56 15.56l-3.54-1.06 2.48-2.48 1.06 3.54zM2 12l3-2v4l-3-2zm20 0l-3 2v-4l3 2zM4.22 19.78l1.06-3.54 2.48 2.48-3.54 1.06zm15.56-15.56l-1.06 3.54-2.48-2.48 3.54-1.06z"/></svg>
+        </button>
+
+        <a href="#isletim-sistemleri" class="btn btn--primary btn--sm" data-i18n="nav_explore">Projeleri Keşfet</a>
+
+        <button class="menu-toggle-btn" id="mobileMenuToggle" aria-label="Menüyü Aç" aria-expanded="false">
+          <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== SUB-NAV ==================== -->
+  <div class="subnav-wrapper">
+    <div class="subnav-pill" role="navigation" aria-label="Hızlı Gezinme">
+      <a href="#hakkimizda" class="subnav-link active" data-i18n="subnav_about">Hakkımızda</a>
+      <a href="#isletim-sistemleri" class="subnav-link" data-i18n="subnav_os">İşletim Sistemleri</a>
+      <a href="#yazilim-araclari" class="subnav-link" data-i18n="subnav_tools">Yazılım Araçları</a>
+      <a href="#maskot" class="subnav-link" data-i18n="subnav_mascot">Maskot</a>
+      <a href="#sosyal" class="subnav-link" data-i18n="subnav_social">Sosyal Medya</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="section hero" id="hakkimizda">
+      <div class="container">
+        <div class="hero__headline">
+          <h1>
+            <span data-i18n="hero_title_line1">Xyronix Studios</span><br>
+            <span class="pill-badge pill-blue" data-i18n="hero_badge">İşletim Sistemi ve Yazılım Projeleri</span>
+          </h1>
+          <p class="hero__subtext" data-i18n="hero_subtext">
+            Xyronix Studios, özgün işletim sistemi, çekirdek mimarileri, sistem yazılımı ve yardımcı araçlar geliştiren bağımsız bir teknoloji stüdyosudur. Projelerimiz; farklı donanım mimarileri, özel paket yönetim sistemleri ve yenilikçi masaüstü ortamları üzerine odaklanmaktadır.
+          </p>
+        </div>
+
+        <div class="hero__cta">
+          <a href="#isletim-sistemleri" class="btn btn--primary" data-i18n="btn_view_os">İşletim Sistemlerini Gör</a>
+          <a href="#yazilim-araclari" class="btn btn--outline" data-i18n="btn_view_tools">Yazılım Araçları</a>
+          <a href="https://youtube.com/@xyronixstudioss" class="btn btn--green" target="_blank" rel="noopener" data-i18n="btn_youtube">YouTube'da İzle</a>
+        </div>
+
+        <!-- ==================== HAKKIMIZDA & MASKOT ==================== -->
+        <div class="about-wrapper" id="maskot">
+          <div class="about-section">
+            <h2 data-i18n="about_title">Xyronix Studios Hakkında</h2>
+            <p data-i18n="about_text">
+              Xyronix Studios, Eren Mut'un liderliğinde ve İnanç İnce'nin değerli katkılarıyla geliştirme faaliyetlerine devam etmektedir. Jubatus OS, Solara OS, Jubatus Hurd ve Jubatus Jedi gibi işletim sistemi projelerinin yanı sıra Xyronix Backup V3 Pro gibi profesyonel yazılım araçları da stüdyomuz tarafından geliştirilmektedir.
+            </p>
+
+            <div class="social-links" id="sosyal">
+              <a href="https://youtube.com/@xyronixstudioss?si=G5CRPFPkW50rkyJQ" class="social-btn btn-youtube" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                YouTube
+              </a>
+              <a href="http://tiktok.com/@jubatus.ekibi" class="social-btn btn-tiktok" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                Jubatus TikTok
+              </a>
+              <a href="https://www.tiktok.com/@pynixos?_r=1&_t=ZS-99ChVjpXlAY" class="social-btn btn-tiktok" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                Pynix OS TikTok
+              </a>
+              <a href="https://www.instagram.com/xyronixstudios?igsi=M2xmZTQyOWJtMXNp" class="social-btn btn-instagram" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                Xyronix Instagram
+              </a>
+              <a href="https://www.instagram.com/jubatusekibi?igsi=bHB1Mm55NG16NjM2" class="social-btn btn-instagram" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                Jubatus Instagram
+              </a>
+            </div>
+          </div>
+
+          <div class="mascot-card">
+            <img src="Xyro.png" alt="Xyro Maskot" class="mascot-img">
+            <div class="mascot-title">Xyro</div>
+            <div class="mascot-desc" data-i18n="mascot_desc">Resmi Stüdyo Maskot & Tasarım Varlığı</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== İŞLETİM SİSTEMLERİ ==================== -->
+    <section class="section section--surface" id="isletim-sistemleri">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span data-i18n="os_section_title">İşletim Sistemi</span> <span class="pill-badge pill-blue" data-i18n="os_section_badge">Projeleri</span>
+          </h2>
+          <p class="section-subtitle" data-i18n="os_section_sub">
+            Farklı donanım mimarileri ve kullanım senaryoları için geliştirilen özgün işletim sistemi projelerimiz.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- Jubatus OS 2.0 -->
+          <div class="project-card" onclick="openModal('jubatusOSModal')">
+            <div>
+              <img src="jubatus-logo.png" alt="Jubatus OS 2.0" class="project-img">
+              <h3>Jubatus OS 2.0</h3>
+              <span class="tag" data-i18n="tag_jubatus_os">64-bit | Ana Sürüm</span>
+              <p data-i18n="jubatus_os_desc">Günlük kullanım hedefiyle geliştirilen, modern masaüstü deneyimi ve geniş donanım desteği sunmayı amaçlayan 64-bit işletim sistemi projesidir.</p>
+              <ul class="features">
+                <li data-i18n="jubatus_os_f1">GNOME Masaüstü Ortamı</li>
+                <li data-i18n="jubatus_os_f2">jps-64 Paket Yöneticisi Altyapısı</li>
+                <li data-i18n="jubatus_os_f3">Optimizasyon ve Kararlılık Odaklı</li>
+              </ul>
+            </div>
+            <div class="card-hint" data-i18n="card_hint">Detayları, Ekran Görüntüsünü ve İndirmeyi Gör →</div>
+          </div>
+
+          <!-- Jubatus Lite 1.0 -->
+          <div class="project-card" onclick="openModal('jubatusLiteModal')">
+            <div>
+              <img src="jubatus-lite.png" alt="Jubatus Lite 1.0" class="project-img project-img-lite">
+              <h3>Jubatus Lite 1.0</h3>
+              <span class="tag" data-i18n="tag_jubatus_lite">32-bit & 64-bit | Hafif Sistem</span>
+              <p data-i18n="jubatus_lite_desc">Düşük donanımlı ve eski bilgisayarlar için optimize edilmiş, hafif kaynak tüketimi sunmayı hedefleyen sistem sürümüdür.</p>
+              <ul class="features">
+                <li data-i18n="jubatus_lite_f1">Hafif XFCE Masaüstü Arayüzü</li>
+                <li data-i18n="jubatus_lite_f2">jps-32 / jps-64 Paket Yöneticisi Desteği</li>
+                <li data-i18n="jubatus_lite_f3">Düşük Donanım Tüketimi</li>
+              </ul>
+            </div>
+            <div class="card-hint" data-i18n="card_hint">Detayları, Ekran Görüntüsünü ve İndirmeyi Gör →</div>
+          </div>
+
+          <!-- Solara OS 1.0 -->
+          <div class="project-card" onclick="openModal('solaraOSModal')">
+            <div>
+              <img src="Solara-OS-Logo.png" alt="Solara OS 1.0" class="project-img">
+              <h3>Solara OS 1.0</h3>
+              <span class="tag" data-i18n="tag_solara">64-bit | Bağımsız Depo</span>
+              <p data-i18n="solara_desc">XFCE masaüstü ortamını kullanan ve kendi solpkg paket yönetimi ile bağımsız paket deposunu sunmayı hedefleyen bir Linux tabanlı işletim sistemi projesidir.</p>
+              <ul class="features">
+                <li data-i18n="solara_f1">XFCE Masaüstü Deneyimi</li>
+                <li data-i18n="solara_f2">Özel solpkg Paket Sistemi</li>
+                <li data-i18n="solara_f3">Linux Tabanlı Altyapı</li>
+              </ul>
+            </div>
+            <div class="card-hint" data-i18n="card_hint">Detayları, Ekran Görüntüsünü ve İndirmeyi Gör →</div>
+          </div>
+
+          <!-- Jubatus Hurd 1.0 -->
+          <div class="project-card" onclick="openModal('jubatusHurdModal')">
+            <div>
+              <img src="Jubatus-Hurd-Logo.png" alt="Jubatus Hurd 1.0" class="project-img">
+              <h3>Jubatus Hurd 1.0</h3>
+              <span class="tag tag-experimental" data-i18n="tag_hurd">Deneysel | Test Sürümü</span>
+              <p data-i18n="hurd_desc">GNU/Hurd altyapısı üzerinde geliştirilen, özel sistem araçları ve paket yönetimi entegrasyonlarını denemeyi amaçlayan deneysel bir işletim sistemi projesidir.</p>
+              <ul class="features">
+                <li data-i18n="hurd_f1">GNU/Hurd Çekirdek Altyapısı</li>
+                <li data-i18n="hurd_f2">APT ve JPS Entegrasyonu</li>
+                <li data-i18n="hurd_f3">Geliştirici Test Sürümü</li>
+              </ul>
+            </div>
+            <div class="card-hint" data-i18n="card_hint">Detayları, Ekran Görüntüsünü ve İndirmeyi Gör →</div>
+          </div>
+
+          <!-- Jubatus Jedi -->
+          <div class="project-card" onclick="openModal('jubatusJediModal')">
+            <div>
+              <img src="jubatus-jedi.png" alt="Jubatus Jedi" class="project-img">
+              <h3>Jubatus Jedi</h3>
+              <span class="tag tag-jedi" data-i18n="tag_jedi">Dokunmatik | Akıllı Tahta Sürümü</span>
+              <p data-i18n="jedi_desc">Dokunmatik akıllı tahtalar için özel olarak optimize edilmiş; eğitim ve sunum odaklı arayüz deneyimi sunan Jubatus Educational Digital Interface sürümüdür.</p>
+              <ul class="features">
+                <li data-i18n="jedi_f1">Dokunmatik Akıllı Tahta Optimizasyonu</li>
+                <li data-i18n="jedi_f2">Jubatus Educational Digital Interface</li>
+                <li data-i18n="jedi_f3">Eğitim ve Sunum Odaklı Deneyim</li>
+              </ul>
+            </div>
+            <div class="card-hint" data-i18n="card_hint">Detayları, Ekran Görüntüsünü ve İndirmeyi Gör →</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== YAZILIM ARAÇLARI ==================== -->
+    <section class="section" id="yazilim-araclari">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span data-i18n="tools_section_title">Stüdyo Yazılım</span> <span class="pill-badge pill-green" data-i18n="tools_section_badge">Araçları</span>
+          </h2>
+          <p class="section-subtitle" data-i18n="tools_section_sub">
+            İşletim sistemlerimizi tamamlayan profesyonel masaüstü araçları ve yardımcı yazılımlar.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- Xyronix Backup V3 Pro -->
+          <div class="project-card" onclick="openModal('backupModal')">
+            <div>
+              <img src="xyronix-backup-logo.png" alt="Xyronix Backup V3 Pro" class="project-img">
+              <h3>Xyronix Backup V3 Pro</h3>
+              <span class="tag tag-tool" data-i18n="tag_backup">Kararlı Sürüm | Masaüstü Aracı</span>
+              <p data-i18n="backup_desc">Akıllı delta yedekleme, snapshot sistemi, anlık geri yükleme, duraklatma/iptal özellikleri ve disk alanı kontrolü sunan profesyonel yedekleme aracı.</p>
+              <ul class="features">
+                <li data-i18n="backup_f1">Akıllı Delta Yedekleme & Snapshot</li>
+                <li data-i18n="backup_f2">Geri Yükleme ve Disk Alanı Kontrolü</li>
+                <li data-i18n="backup_f3">Modern Koyu Tema & Tkinter Arayüzü</li>
+              </ul>
+            </div>
+            <div class="card-hint" data-i18n="card_hint">Detayları, Ekran Görüntüsünü ve Anlatımı Gör →</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== MODALLAR ==================== -->
+
+  <!-- Jubatus OS 2.0 Modal -->
+  <div id="jubatusOSModal" class="modal-overlay" onclick="outsideClose(event, 'jubatusOSModal')">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('jubatusOSModal')">&times;</button>
+      <div class="modal-header">
+        <img src="jubatus-logo.png" alt="Jubatus OS">
+        <h2 data-i18n="modal_jubatus_os_title">Jubatus OS 2.0 - Kapsamlı Sistem Detayları</h2>
+      </div>
+      <div class="modal-screenshot-container">
+        <img src="jubatus-os-ekran-goruntusu.png" alt="Jubatus OS Ekran Görüntüsü" class="modal-screenshot">
+      </div>
+      <div class="modal-body">
+        <h3 data-i18n="modal_arch_title">Proje Mimarisi ve Hedef</h3>
+        <p data-i18n="modal_jubatus_os_p1">Jubatus OS 2.0, Xyronix Studios tarafından geliştirilen amiral gemisi niteliğinde, son derece kararlı ve modern bir 64-bit işletim sistemi projesidir. Günlük masaüstü kullanımını en üst düzey performansla buluşturmak, kullanıcıya akıcı ve profesyonel bir çalışma ortamı sunmak için sıfırdan optimize edilmiştir.</p>
+
+        <h3 data-i18n="modal_jps_title">jps-64 Paket Yönetim Sistemi</h3>
+        <p data-i18n="modal_jubatus_os_p2">Sistemin kalbinde, stüdyonun özel olarak geliştirdiği <code>jps-64</code> paket yöneticisi yer alır. 64-bit mimariye tam entegre çalışan bu altyapı sayesinde kullanıcılar;</p>
+        <ul>
+          <li data-i18n="modal_jubatus_os_li1">Komut satırı üzerinden veya özel grafik arayüzlerle hızlı paket kurulumu, güncellemesi ve kaldırılması işlemleri gerçekleştirebilir,</li>
+          <li data-i18n="modal_jubatus_os_li2">Okul projeleri ve stüdyo yazılımları için özel olarak yapılandırılmış <code>student-projects</code> gibi özel depolara kolayca erişebilir,</li>
+          <li data-i18n="modal_jubatus_os_li3">Git entegrasyonlu betikler sayesinde paket bağımlılıklarını güvenli ve hatasız bir şekilde yönetebilir.</li>
+        </ul>
+
+        <h3 data-i18n="modal_features_title">Öne Çıkan Teknik Özellikler</h3>
+        <ul>
+          <li data-i18n="modal_jubatus_os_f1"><strong>GNOME Masaüstü Ortamı:</strong> Özelleştirilmiş tema bileşenleri, pürüzsüz pencere geçişleri ve modern uygulama çekmecesi yerleşimi.</li>
+          <li data-i18n="modal_jubatus_os_f2"><strong>Gelişmiş Donanım Uyumluluğu:</strong> Geniş sürücü desteği sayesinde modern işlemci ve grafik kartlarıyla kusursuz uyum.</li>
+          <li data-i18n="modal_jubatus_os_f3"><strong>Güvenlik ve Kararlılık:</strong> Arka plan servisleri optimize edilerek minimum kaynak tüketimi ve maksimum sistem güvenliği hedeflenmiştir.</li>
+        </ul>
+
+        <a href="https://drive.google.com/file/d/1xyGH6xqzO77gjYQ_eUWreOGqtLgWVNxh/view?usp=sharing" class="modal-download-btn" target="_blank" data-i18n="modal_download_jubatus_os">📥 Jubatus OS 2.0 (.ISO İndir)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jubatus Lite Modal -->
+  <div id="jubatusLiteModal" class="modal-overlay" onclick="outsideClose(event, 'jubatusLiteModal')">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('jubatusLiteModal')">&times;</button>
+      <div class="modal-header">
+        <img src="jubatus-lite.png" alt="Jubatus Lite">
+        <h2 data-i18n="modal_jubatus_lite_title">Jubatus Lite 1.0 - Kapsamlı Sistem Detayları</h2>
+      </div>
+      <div class="modal-screenshot-container">
+        <img src="jubatus-lite-ekran-goruntusu.png" alt="Jubatus Lite Ekran Görüntüsü" class="modal-screenshot">
+      </div>
+      <div class="modal-body">
+        <h3 data-i18n="modal_arch_title">Proje Mimarisi ve Hedef</h3>
+        <p data-i18n="modal_jubatus_lite_p1">Jubatus Lite 1.0, düşük donanımlı, eski nesil veya sistem kaynakları kısıtlı bilgisayarları yeniden hayata döndürmek amacıyla özel olarak optimize edilmiş hafif sistem sürümüdür. Gereksiz hiçbir arka plan yükü barındırmayan yalın ve hızlı bir mimari sunar.</p>
+
+        <h3 data-i18n="modal_jps32_title">jps-32 ve jps-64 Paket Yönetim Sistemi</h3>
+        <p data-i18n="modal_jubatus_lite_p2">Donanım tercihine göre hafifletilmiş paket yöneticileriyle birlikte gelir:</p>
+        <ul>
+          <li data-i18n="modal_jubatus_lite_li1">32-bit ve 64-bit mimarilerle tam uyumlu çalışarak paket indirme ve derleme süreçlerinde minimum kaynak harcar,</li>
+          <li data-i18n="modal_jubatus_lite_li2">Hafif komut seti tabanlı depolarla etkileşime girerek yazılım yönetimini zahmetsiz hale getirir,</li>
+          <li data-i18n="modal_jubatus_lite_li3">Eğitim laboratuvarları ve farklı donanımlar için optimize edilmiş paket depolarını destekler.</li>
+        </ul>
+
+        <h3 data-i18n="modal_features_title">Öne Çıkan Teknik Özellikler</h3>
+        <ul>
+          <li data-i18n="modal_jubatus_lite_f1"><strong>Hafif XFCE Masaüstü Arayüzü:</strong> Sistem belleğini minimumda tutan, son derece hızlı ve özelleştirilebilir pencere yöneticisi.</li>
+          <li data-i18n="modal_jubatus_lite_f2"><strong>Düşük Kaynak Tüketimi:</strong> Çok düşük RAM ve CPU kullanımıyla sistemlerde yağ gibi akıcı performans.</li>
+          <li data-i18n="modal_jubatus_lite_f3"><strong>Hızlandırılmış Açılış Süreleri:</strong> Budanmış servis listesi sayesinde saniyeler içinde masaüstüne ulaşım.</li>
+        </ul>
+
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="https://drive.google.com/file/d/1ezg5N17GNW9S3WilZkjiJd4QrKdz-Wuj/view?usp=sharing" class="modal-download-btn" target="_blank" data-i18n="modal_download_lite_32">📥 Jubatus Lite 32-bit (.ISO İndir)</a>
+          <a href="https://drive.google.com/file/d/1hD9q6c65WskUYYKzKoqk8d_Spwflnzgs/view?usp=sharing" class="modal-download-btn" target="_blank" data-i18n="modal_download_lite_64">📥 Jubatus Lite 64-bit (.ISO İndir)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Solara OS Modal -->
+  <div id="solaraOSModal" class="modal-overlay" onclick="outsideClose(event, 'solaraOSModal')">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('solaraOSModal')">&times;</button>
+      <div class="modal-header">
+        <img src="Solara-OS-Logo.png" alt="Solara OS">
+        <h2 data-i18n="modal_solara_title">Solara OS 1.0 - Kapsamlı Sistem Detayları</h2>
+      </div>
+      <div class="modal-screenshot-container">
+        <img src="solara-os-ekran-goruntusu.png" alt="Solara OS Ekran Görüntüsü" class="modal-screenshot">
+      </div>
+      <div class="modal-body">
+        <h3 data-i18n="modal_about_title">Proje Hakkında</h3>
+        <p data-i18n="modal_solara_p1">Solara OS 1.0, XFCE masaüstü ortamının hızını ve esnekliğini kendine has bağımsız depo mimarisiyle buluşturan 64-bit Linux tabanlı işletim sistemi projesidir.</p>
+
+        <h3 data-i18n="modal_features_arch_title">Öne Çıkan Özellikler ve Mimari</h3>
+        <ul>
+          <li data-i18n="modal_solara_li1"><strong>Özel solpkg Paket Yöneticisi:</strong> Kendi bağımsız paket deposundan paket yönetimi sağlayan sistem altyapısı.</li>
+          <li data-i18n="modal_solara_li2"><strong>Şık XFCE Deneyimi:</strong> Performanstan ödün vermeyen modern masaüstü yerleşimi ve özel stüdyo temaları.</li>
+          <li data-i18n="modal_solara_li3"><strong>Bağımsız Ekosistem:</strong> Xyronix stüdyo standartlarına uygun özel sistem ayarları ve araç setleri.</li>
+        </ul>
+
+        <a href="https://drive.google.com/file/d/1f0_s8QFUR-kIF2C0phNy--wqUPe7NZa_/view?usp=drive_link" class="modal-download-btn" target="_blank" data-i18n="modal_download_solara">📥 Solara OS 1.0 (.ISO İndir)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jubatus Hurd Modal -->
+  <div id="jubatusHurdModal" class="modal-overlay" onclick="outsideClose(event, 'jubatusHurdModal')">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('jubatusHurdModal')">&times;</button>
+      <div class="modal-header">
+        <img src="Jubatus-Hurd-Logo.png" alt="Jubatus Hurd">
+        <h2 data-i18n="modal_hurd_title">Jubatus Hurd 1.0 - Kapsamlı Sistem Detayları</h2>
+      </div>
+      <div class="modal-screenshot-container">
+        <img src="jubatus-hurd-ekran-goruntusu.png" alt="Jubatus Hurd Ekran Görüntüsü" class="modal-screenshot">
+      </div>
+      <div class="modal-body">
+        <h3 data-i18n="modal_about_title">Proje Hakkında</h3>
+        <p data-i18n="modal_hurd_p1">Jubatus Hurd 1.0, GNU/Hurd mikrokekirdek mimarisi üzerinde araştırma yapmak ve yeni nesil sistem bileşenlerini test etmek amacıyla geliştirilen deneysel bir sürümdür.</p>
+
+        <h3 data-i18n="modal_features_arch_title">Öne Çıkan Özellikler ve Mimari</h3>
+        <ul>
+          <li data-i18n="modal_hurd_li1"><strong>GNU/Hurd Çekirdek Altyapısı:</strong> Geleneksel monolitik çekirdekler yerine sunucu tabanlı mikrokekirdek yaklaşımı.</li>
+          <li data-i18n="modal_hurd_li2"><strong>APT ve JPS Entegrasyon Denemeleri:</strong> Farklı paket yöneticisi ekosistemlerinin Hurd üzerinde koşturulması.</li>
+          <li data-i18n="modal_hurd_li3"><strong>Geliştirici Odaklı Yapı:</strong> Tamamen deneysel ve ileri düzey testler için tasarlanmış altyapı.</li>
+        </ul>
+
+        <a href="https://drive.google.com/drive/folders/1i9YtonyGwGjXM5XDIdbhgxmDsUfZE2IQ?usp=drive_link" class="modal-download-btn" target="_blank" data-i18n="modal_download_hurd">📥 Jubatus Hurd 1.0 (Drive Klasörünü İndir)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jubatus Jedi Modal -->
+  <div id="jubatusJediModal" class="modal-overlay" onclick="outsideClose(event, 'jubatusJediModal')">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('jubatusJediModal')">&times;</button>
+      <div class="modal-header">
+        <img src="jubatus-jedi.png" alt="Jubatus Jedi">
+        <h2 data-i18n="modal_jedi_title">Jubatus Jedi - Kapsamlı Sistem Detayları</h2>
+      </div>
+      <div class="modal-screenshot-container">
+        <img src="jubatus-jedi-ekran-goruntusu.png" alt="Jubatus Jedi Ekran Görüntüsü" class="modal-screenshot">
+      </div>
+      <div class="modal-body">
+        <h3 data-i18n="modal_about_title">Proje Hakkında</h3>
+        <p data-i18n="modal_jedi_p1"><strong>Jubatus Jedi</strong> (Jubatus Educational Digital Interface), dokunmatik akıllı tahtalar için özel olarak geliştirilmiş, sınıflar ve eğitim ortamları için optimize edilmiş yenilikçi bir sistem sürümüdür.</p>
+
+        <h3 data-i18n="modal_features_arch_title">Öne Çıkan Özellikler ve Mimari</h3>
+        <ul>
+          <li data-i18n="modal_jedi_li1"><strong>Dokunmatik Akıllı Tahta Optimizasyonu:</strong> Parmak ve kaleme duyarlı etkileşim özellikleri ile akıllı tahta donanımlarında kusursuz kullanım.</li>
+          <li data-i18n="modal_jedi_li2"><strong>Eğitim Odaklı Arayüz:</strong> Sınıf içi sunumlar, ders içerikleri ve interaktif uygulamalar için kolay erişilebilir özel arayüz tasarımı.</li>
+          <li data-i18n="modal_jedi_li3"><strong>Jubatus Ekosistem Entegrasyonu:</strong> Eğitim materyalleri ve stüdyo araçlarıyla tam uyumlu altyapı.</li>
+        </ul>
+
+        <a href="https://drive.google.com/file/d/1U09B0emXSrtNrNh4TjrdsetjFp5hbcaa/view?usp=sharing" class="modal-download-btn" target="_blank" data-i18n="modal_download_jedi">📥 Jubatus Jedi (.ISO İndir)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Xyronix Backup Modal -->
+  <div id="backupModal" class="modal-overlay" onclick="outsideClose(event, 'backupModal')">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('backupModal')">&times;</button>
+      <div class="modal-header">
+        <img src="xyronix-backup-logo.png" alt="Xyronix Backup">
+        <h2 data-i18n="modal_backup_title">Xyronix Backup V3 Pro - Kapsamlı Araç Detayları</h2>
+      </div>
+      <div class="modal-screenshot-container">
+        <img src="xyronix-backup-ekran-goruntusu.png" alt="Xyronix Backup Ekran Görüntüsü" class="modal-screenshot">
+      </div>
+      <div class="modal-body">
+        <h3 data-i18n="modal_about_title">Araç Hakkında</h3>
+        <p data-i18n="modal_backup_p1">Xyronix Backup V3 Pro, sistem dosyalarınızı ve kişisel verilerinizi güvenle korumanız için geliştirilmiş gelişmiş bir masaüstü yedekleme uygulamasıdır.</p>
+
+        <h3 data-i18n="modal_backup_features_title">Öne Çıkan Özellikler</h3>
+        <ul>
+          <li data-i18n="modal_backup_li1"><strong>Akıllı Delta Yedekleme:</strong> Yalnızca değişen verileri algılayarak yedekleme süresini ve depolama alanını minimuma indirir.</li>
+          <li data-i18n="modal_backup_li2"><strong>Snapshot (Anlık Görüntü) Sistemi:</strong> Belirli zaman dilimlerindeki sistem durumlarını anlık olarak saklama ve geri yükleme.</li>
+          <li data-i18n="modal_backup_li3"><strong>Gelişmiş Denetim:</strong> Duraklatma, iptal etme ve detaylı disk alanı analizi özellikleri.</li>
+          <li data-i18n="modal_backup_li4"><strong>Modern Tkinter Arayüzü:</strong> Sistemle uyumlu koyu tema tasarımı.</li>
+        </ul>
+
+        <a href="https://drive.google.com/drive/folders/1lKWhNLU8EkmZLATCpRmG8ukrIAmUiyIn?usp=drive_link" class="modal-download-btn" target="_blank" data-i18n="modal_download_backup">📥 Xyronix Backup V3 Pro (Drive Klasörünü İndir)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
     <div class="container">
+      <p style="margin-bottom: 8px;">&copy; 2026 Xyronix Studios — <span data-i18n="footer_rights">Tüm hakları saklıdır.</span></p>
+      <p style="font-size: 0.85rem;"><span data-i18n="footer_leader">Proje Lideri: Eren Mut</span> | <span data-i18n="footer_contributor">Katkıda Bulunan: İnanç İnce</span></p>
+      <p style="margin-top: 16px;">
+        <a href="#hakkimizda" data-i18n="nav_about">Hakkımızda</a> ·
+        <a href="#isletim-sistemleri" data-i18n="nav_os">İşletim Sistemleri</a> ·
+        <a href="#yazilim-araclari" data-i18n="nav_tools">Yazılım Araçları</a>
+      </p>
+    </div>
+  </footer>
 
-        <div class="about-wrapper">
-            <div class="about-section">
-                <h2>Xyronix Studios Hakkında</h2>
-                <p>Xyronix Studios, özgün işletim sistemi, çekirdek mimarileri, sistem yazılımı ve yardımcı araçlar geliştiren bağımsız bir teknoloji stüdyosudur. Projelerimiz; farklı donanım mimarileri, özel paket yönetim sistemleri ve yenilikçi masaüstü ortamları üzerine odaklanmaktadır. Xyronix Studios, Eren Mut'un liderliğinde ve İnanç İnce'nin değerli katkılarıyla geliştirme faaliyetlerine devam etmektedir.</p>
-
-                <div class="social-links">
-                    <a href="https://youtube.com/@xyronixstudioss?si=G5CRPFPkW50rkyJQ" class="social-btn btn-youtube" target="_blank">
-                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                        YouTube
-                    </a>
-                    <a href="http://tiktok.com/@jubatus.ekibi" class="social-btn btn-tiktok" target="_blank">
-                        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
-                        Xyronix TikTok
-                    </a>
-                    <a href="https://www.tiktok.com/@pynixos?_r=1&_t=ZS-99ChVjpXlAY" class="social-btn btn-tiktok" target="_blank">
-                        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
-                        Pynix OS TikTok
-                    </a>
-                    <a href="https://www.instagram.com/xyronixstudios?igsi=M2xmZTQyOWJtMXNp" class="social-btn btn-instagram" target="_blank">
-                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        Xyronix Instagram
-                    </a>
-                    <a href="https://www.instagram.com/jubatusekibi?igsi=bHB1Mm55NG16NjM2" class="social-btn btn-instagram" target="_blank">
-                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        Jubatus Instagram
-                    </a>
-                </div>
-            </div>
-
-            <div class="mascot-card">
-                <img src="Xyro.png" alt="Xyro Maskot" class="mascot-img">
-                <div class="mascot-title">Xyro</div>
-                <div class="mascot-desc">Resmi Stüdyo Maskot & Tasarım Varlığı</div>
-            </div>
-        </div>
-
-        <h2 class="section-title">İşletim Sistemi Projeleri</h2>
-        <div class="os-grid">
-
-            <div class="os-card" onclick="openModal('jubatusOSModal')">
-                <div>
-                    <img src="jubatus-logo.png" alt="Jubatus OS 2.0" class="os-img">
-                    <h2>Jubatus OS 2.0</h2>
-                    <span class="tag">64-bit | Ana Sürüm</span>
-                    <p>Günlük kullanım hedefiyle geliştirilen, modern masaüstü deneyimi ve geniş donanım desteği sunmayı amaçlayan 64-bit işletim sistemi projesidir.</p>
-                    <ul class="features">
-                        <li>GNOME Masaüstü Ortamı</li>
-                        <li>jps-64 Paket Yöneticisi Altyapısı</li>
-                        <li>Optimizasyon ve Kararlılık Odaklı</li>
-                    </ul>
-                </div>
-                <div class="card-hint">Detayları, Ekran Görüntüsünü ve İndirmeyi Gör &rarr;</div>
-            </div>
-
-            <div class="os-card" onclick="openModal('jubatusLiteModal')">
-                <div>
-                    <img src="jubatus-lite.png" alt="Jubatus Lite 1.0" class="os-img-lite">
-                    <h2>Jubatus Lite 1.0</h2>
-                    <span class="tag">32-bit & 64-bit | Hafif Sistem</span>
-                    <p>Düşük donanımlı ve eski bilgisayarlar için optimize edilmiş, hafif kaynak tüketimi sunmayı hedefleyen sistem sürümüdür.</p>
-                    <ul class="features">
-                        <li>Hafif XFCE Masaüstü Arayüzü</li>
-                        <li>jps-32 / jps-64 Paket Yöneticisi Desteği</li>
-                        <li>Düşük Donanım Tüketimi</li>
-                    </ul>
-                </div>
-                <div class="card-hint">Detayları, Ekran Görüntüsünü ve İndirmeyi Gör &rarr;</div>
-            </div>
-
-            <div class="os-card" onclick="openModal('solaraOSModal')">
-                <div>
-                    <img src="Solara-OS-Logo.png" alt="Solara OS 1.0" class="os-img">
-                    <h2>Solara OS 1.0</h2>
-                    <span class="tag">64-bit | Bağımsız Depo</span>
-                    <p>XFCE masaüstü ortamını kullanan ve kendi solpkg paket yönetimi ile bağımsız paket deposunu sunmayı hedefleyen bir Linux tabanlı işletim sistemi projesidir.</p>
-                    <ul class="features">
-                        <li>XFCE Masaüstü Deneyimi</li>
-                        <li>Özel solpkg Paket Sistemi</li>
-                        <li>Linux Tabanlı Altyapı</li>
-                    </ul>
-                </div>
-                <div class="card-hint">Detayları, Ekran Görüntüsünü ve İndirmeyi Gör &rarr;</div>
-            </div>
-
-            <div class="os-card" onclick="openModal('jubatusHurdModal')">
-                <div>
-                    <img src="Jubatus-Hurd-Logo.png" alt="Jubatus Hurd 1.0" class="os-img">
-                    <h2>Jubatus Hurd 1.0</h2>
-                    <span class="tag tag-experimental">Deneysel | Test Sürümü</span>
-                    <p>GNU/Hurd altyapısı üzerinde geliştirilen, özel sistem araçları ve paket yönetimi entegrasyonlarını denemeyi amaçlayan deneysel bir işletim sistemi projesidir.</p>
-                    <ul class="features">
-                        <li>GNU/Hurd Çekirdek Altyapısı</li>
-                        <li>APT ve JPS Entegrasyonu</li>
-                        <li>Geliştirici Test Sürümü</li>
-                    </ul>
-                </div>
-                <div class="card-hint">Detayları, Ekran Görüntüsünü ve İndirmeyi Gör &rarr;</div>
-            </div>
-
-        </div>
-
-        <h2 class="section-title">Stüdyo Yazılım Araçları</h2>
-        <div class="os-grid">
-
-            <div class="os-card" onclick="openModal('backupModal')">
-                <div>
-                    <img src="xyronix-backup-logo.png" alt="Xyronix Backup V3 Pro" class="os-img">
-                    <h2>Xyronix Backup V3 Pro</h2>
-                    <span class="tag tag-tool">Kararlı Sürüm | Masaüstü Aracı</span>
-                    <p>Akıllı delta yedekleme, snapshot sistemi, anlık geri yükleme, duraklatma/iptal özellikleri ve disk alanı kontrolü sunan profesyonel yedekleme aracı.</p>
-                    <ul class="features">
-                        <li>Akıllı Delta Yedekleme & Snapshot</li>
-                        <li>Geri Yükleme ve Disk Alanı Kontrolü</li>
-                        <li>Modern Koyu Tema & Tkinter Arayüzü</li>
-                    </ul>
-                </div>
-                <div class="card-hint">Detayları, Ekran Görüntüsünü ve Anlatımı Gör &rarr;</div>
-            </div>
-
-        </div>
-
+  <!-- ==================== MOBİL MENÜ ==================== -->
+  <div class="mobile-menu-scrim" id="mobileMenuScrim"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-label="Mobil Menü">
+    <div class="mobile-menu-header">
+      <a href="#" class="brand">
+        <img src="Xyronix-OS-Logo-Black.png" alt="Xyronix Studios Logo" class="brand__img" id="mobileBrandLogo">
+        <span style="font-size: 1.1rem;">Xyronix</span>
+      </a>
+      <button class="mobile-menu-close-btn" id="mobileMenuClose" aria-label="Menüyü Kapat">
+        <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
     </div>
 
-    <div id="jubatusOSModal" class="modal-overlay" onclick="outsideClose(event, 'jubatusOSModal')">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('jubatusOSModal')">&times;</button>
-            <div class="modal-header">
-                <img src="jubatus-logo.png" alt="Jubatus OS">
-                <h2>Jubatus OS 2.0 - Kapsamlı Sistem Detayları</h2>
-            </div>
-            <div class="modal-screenshot-container">
-                <img src="jubatus-os-ekran-goruntusu.png" alt="Jubatus OS Ekran Görüntüsü" class="modal-screenshot">
-            </div>
-            <div class="modal-body">
-                <h3>Proje Mimarisi ve Hedef</h3>
-                <p>Jubatus OS 2.0, Xyronix Studios tarafından geliştirilen amiral gemisi niteliğinde, son derece kararlı ve modern bir 64-bit işletim sistemi projesidir. Günlük masaüstü kullanımını en üst düzey performansla buluşturmak, kullanıcıya akıcı ve profesyonel bir çalışma ortamı sunmak için sıfırdan optimize edilmiştir.</p>
-
-                <h3>jps-64 Paket Yönetim Sistemi</h3>
-                <p>Sistemin kalbinde, stüdyonun özel olarak geliştirdiği <strong>jps-64</strong> paket yöneticisi yer alır. 64-bit mimariye tam entegre çalışan bu altyapı sayesinde kullanıcılar;</p>
-                <ul>
-                    <li>Komut satırı üzerinden veya özel grafik arayüzlerle hızlı paket kurulumu, güncellemesi ve kaldırılması işlemleri gerçekleştirebilir,</li>
-                    <li>Okul projeleri ve stüdyo yazılımları için özel olarak yapılandırılmış <code>student-projects</code> gibi özel depolara kolayca erişebilir,</li>
-                    <li>Git entegrasyonlu betikler sayesinde paket bağımlılıklarını güvenli ve hatasız bir şekilde yönetebilir.</li>
-                </ul>
-
-                <h3>Öne Çıkan Teknik Özellikler</h3>
-                <ul>
-                    <li><strong>GNOME Masaüstü Ortamı:</strong> Özelleştirilmiş tema bileşenleri, pürüzsüz pencere geçişleri ve modern uygulama çekmecesi yerleşimi.</li>
-                    <li><strong>Gelişmiş Donanım Uyumluluğu:</strong> Geniş sürücü desteği sayesinde modern işlemci ve grafik kartlarıyla kusursuz uyum.</li>
-                    <li><strong>Güvenlik ve Kararlılık:</strong> Arka plan servisleri optimize edilerek minimum kaynak tüketimi ve maksimum sistem güvenliği hedeflenmiştir.</li>
-                </ul>
-
-                <a href="https://drive.google.com/file/d/1xyGH6xqzO77gjYQ_eUWreOGqtLgWVNxh/view?usp=sharing" class="modal-download-btn" target="_blank">📥 Jubatus OS 2.0 (.ISO İndir)</a>
-            </div>
-        </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-section-title" data-i18n="mob_platforms">Platformlar</div>
+      <ul class="mobile-menu-list">
+        <li>
+          <a href="#hakkimizda" class="mobile-menu-link">
+            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span data-i18n="nav_about">Hakkımızda</span>
+          </a>
+        </li>
+        <li>
+          <a href="#isletim-sistemleri" class="mobile-menu-link">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <span data-i18n="nav_os">İşletim Sistemleri</span>
+          </a>
+        </li>
+        <li>
+          <a href="#yazilim-araclari" class="mobile-menu-link">
+            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+            <span data-i18n="nav_tools">Yazılım Araçları</span>
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <div id="jubatusLiteModal" class="modal-overlay" onclick="outsideClose(event, 'jubatusLiteModal')">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('jubatusLiteModal')">&times;</button>
-            <div class="modal-header">
-                <img src="jubatus-lite.png" alt="Jubatus Lite">
-                <h2>Jubatus Lite 1.0 - Kapsamlı Sistem Detayları</h2>
-            </div>
-            <div class="modal-screenshot-container">
-                <img src="jubatus-lite-ekran-goruntusu.png" alt="Jubatus Lite Ekran Görüntüsü" class="modal-screenshot">
-            </div>
-            <div class="modal-body">
-                <h3>Proje Mimarisi ve Hedef</h3>
-                <p>Jubatus Lite 1.0, düşük donanımlı, eski nesil veya sistem kaynakları kısıtlı bilgisayarları yeniden hayata döndürmek amacıyla özel olarak optimize edilmiş hafif sistem sürümüdür. Gereksiz hiçbir arka plan yükü barındırmayan yalın ve hızlı bir mimari sunar.</p>
-
-                <h3>jps-32 ve jps-64 Paket Yönetim Sistemi</h3>
-                <p>Donanım tercihine göre hafifletilmiş paket yöneticileriyle birlikte gelir:</p>
-                <ul>
-                    <li>32-bit ve 64-bit mimarilerle tam uyumlu çalışarak paket indirme ve derleme süreçlerinde minimum kaynak harcar,</li>
-                    <li>Hafif komut seti tabanlı depolarla etkileşime girerek yazılım yönetimini zahmetsiz hale getirir,</li>
-                    <li>Eğitim laboratuvarları ve farklı donanımlar için optimize edilmiş paket depolarını destekler.</li>
-                </ul>
-
-                <h3>Öne Çıkan Teknik Özellikler</h3>
-                <ul>
-                    <li><strong>Hafif XFCE Masaüstü Arayüzü:</strong> Sistem belleğini minimumda tutan, son derece hızlı ve özelleştirilebilir pencere yöneticisi.</li>
-                    <li><strong>Düşük Kaynak Tüketimi:</strong> Çok düşük RAM ve CPU kullanımıyla sistemlerde yağ gibi akıcı performans.</li>
-                    <li><strong>Hızlandırılmış Açılış Süreleri:</strong> Budanmış servis listesi sayesinde saniyeler içinde masaüstüne ulaşım.</li>
-                </ul>
-
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="https://drive.google.com/file/d/1ezg5N17GNW9S3WilZkjiJd4QrKdz-Wuj/view?usp=sharing" class="modal-download-btn" target="_blank">📥 Jubatus Lite 32-bit (.ISO İndir)</a>
-                    <a href="https://drive.google.com/file/d/1hD9q6c65WskUYYKzKoqk8d_Spwflnzgs/view?usp=sharing" class="modal-download-btn" target="_blank">📥 Jubatus Lite 64-bit (.ISO İndir)</a>
-                </div>
-            </div>
-        </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-section-title" data-i18n="mob_language">Dil</div>
+      <div class="mobile-lang-switch">
+        <button class="lang-btn active" data-lang="tr">TR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="az">AZ</button>
+      </div>
     </div>
 
-    <div id="solaraOSModal" class="modal-overlay" onclick="outsideClose(event, 'solaraOSModal')">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('solaraOSModal')">&times;</button>
-            <div class="modal-header">
-                <img src="Solara-OS-Logo.png" alt="Solara OS">
-                <h2>Solara OS 1.0 - Kapsamlı Sistem Detayları</h2>
-            </div>
-            <div class="modal-screenshot-container">
-                <img src="solara-os-ekran-goruntusu.png" alt="Solara OS Ekran Görüntüsü" class="modal-screenshot">
-            </div>
-            <div class="modal-body">
-                <h3>Proje Hakkında</h3>
-                <p>Solara OS 1.0, XFCE masaüstü ortamının hızını ve esnekliğini kendine has bağımsız depo mimarisiyle buluşturan 64-bit Linux tabanlı işletim sistemi projesidir.</p>
-
-                <h3>Öne Çıkan Özellikler ve Mimari</h3>
-                <ul>
-                    <li><strong>Özel solpkg Paket Yöneticisi:</strong> Kendi bağımsız paket deposundan paket yönetimi sağlayan sistem altyapısı.</li>
-                    <li><strong>Şık XFCE Deneyimi:</strong> Performanstan ödün vermeyen modern masaüstü yerleşimi ve özel stüdyo temaları.</li>
-                    <li><strong>Bağımsız Ekosistem:</strong> Xyronix stüdyo standartlarına uygun özel sistem ayarları ve araç setleri.</li>
-                </ul>
-
-                <a href="https://drive.google.com/file/d/1f0_s8QFUR-kIF2C0phNy--wqUPe7NZa_/view?usp=drive_link" class="modal-download-btn" target="_blank">📥 Solara OS 1.0 (.ISO İndir)</a>
-            </div>
-        </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-section-title" data-i18n="mob_links">Bağlantılar</div>
+      <ul class="mobile-menu-list">
+        <li>
+          <a href="https://youtube.com/@xyronixstudioss" class="mobile-menu-link" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <span>YouTube</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/xyronixstudios" class="mobile-menu-link" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span>Instagram</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://tiktok.com/@jubatus.ekibi" class="mobile-menu-link" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+            <span>TikTok</span>
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <div id="jubatusHurdModal" class="modal-overlay" onclick="outsideClose(event, 'jubatusHurdModal')">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('jubatusHurdModal')">&times;</button>
-            <div class="modal-header">
-                <img src="Jubatus-Hurd-Logo.png" alt="Jubatus Hurd">
-                <h2>Jubatus Hurd 1.0 - Kapsamlı Sistem Detayları</h2>
-            </div>
-            <div class="modal-screenshot-container">
-                <img src="jubatus-hurd-ekran-goruntusu.png" alt="Jubatus Hurd Ekran Görüntüsü" class="modal-screenshot">
-            </div>
-            <div class="modal-body">
-                <h3>Proje Hakkında</h3>
-                <p>Jubatus Hurd 1.0, GNU/Hurd mikrokekirdek mimarisi üzerinde araştırma yapmak ve yeni nesil sistem bileşenlerini test etmek amacıyla geliştirilen deneysel bir sürümdür.</p>
-
-                <h3>Öne Çıkan Özellikler ve Mimari</h3>
-                <ul>
-                    <li><strong>GNU/Hurd Çekirdek Altyapısı:</strong> Geleneksel monolitik çekirdekler yerine sunucu tabanlı mikrokekirdek yaklaşımı.</li>
-                    <li><strong>APT ve JPS Entegrasyon Denemeleri:</strong> Farklı paket yöneticisi ekosistemlerinin Hurd üzerinde koşturulması.</li>
-                    <li><strong>Geliştirici Odaklı Yapı:</strong> Tamamen deneysel ve ileri düzey testler için tasarlanmış altyapı.</li>
-                </ul>
-
-                <a href="https://drive.google.com/drive/folders/1i9YtonyGwGjXM5XDIdbhgxmDsUfZE2IQ?usp=drive_link" class="modal-download-btn" target="_blank">📥 Jubatus Hurd 1.0 (Drive Klasörünü İndir)</a>
-            </div>
-        </div>
+    <div class="mobile-menu-actions">
+      <a href="#isletim-sistemleri" class="btn btn--primary" style="width: 100%; justify-content: center;" data-i18n="nav_explore">Projeleri Keşfet</a>
+      <a href="https://youtube.com/@xyronixstudioss" class="btn btn--outline" style="width: 100%; justify-content: center;" target="_blank" data-i18n="btn_youtube">YouTube'da İzle</a>
     </div>
+  </aside>
 
-    <div id="backupModal" class="modal-overlay" onclick="outsideClose(event, 'backupModal')">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('backupModal')">&times;</button>
-            <div class="modal-header">
-                <img src="xyronix-backup-logo.png" alt="Xyronix Backup">
-                <h2>Xyronix Backup V3 Pro - Kapsamlı Araç Detayları</h2>
-            </div>
-            <div class="modal-screenshot-container">
-                <img src="xyronix-backup-ekran-goruntusu.png" alt="Xyronix Backup Ekran Görüntüsü" class="modal-screenshot">
-            </div>
-            <div class="modal-body">
-                <h3>Araç Hakkında</h3>
-                <p>Xyronix Backup V3 Pro, sistem dosyalarınızı ve kişisel verilerinizi güvenle korumanız için geliştirilmiş gelişmiş bir masaüstü yedekleme uygulamasıdır.</p>
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    /* ============================================================
+       1. ÇEVİRİ SÖZLÜĞÜ (i18n)
+       ============================================================ */
+    const translations = {
+      tr: {
+        nav_about: "Hakkımızda",
+        nav_os: "İşletim Sistemleri",
+        nav_tools: "Yazılım Araçları",
+        nav_explore: "Projeleri Keşfet",
+        subnav_about: "Hakkımızda",
+        subnav_os: "İşletim Sistemleri",
+        subnav_tools: "Yazılım Araçları",
+        subnav_mascot: "Maskot",
+        subnav_social: "Sosyal Medya",
+        hero_title_line1: "Xyronix Studios",
+        hero_badge: "İşletim Sistemi ve Yazılım Projeleri",
+        hero_subtext: "Xyronix Studios, özgün işletim sistemi, çekirdek mimarileri, sistem yazılımı ve yardımcı araçlar geliştiren bağımsız bir teknoloji stüdyosudur. Projelerimiz; farklı donanım mimarileri, özel paket yönetim sistemleri ve yenilikçi masaüstü ortamları üzerine odaklanmaktadır.",
+        btn_view_os: "İşletim Sistemlerini Gör",
+        btn_view_tools: "Yazılım Araçları",
+        btn_youtube: "YouTube'da İzle",
+        about_title: "Xyronix Studios Hakkında",
+        about_text: "Xyronix Studios, Eren Mut'un liderliğinde ve İnanç İnce'nin değerli katkılarıyla geliştirme faaliyetlerine devam etmektedir. Jubatus OS, Solara OS, Jubatus Hurd ve Jubatus Jedi gibi işletim sistemi projelerinin yanı sıra Xyronix Backup V3 Pro gibi profesyonel yazılım araçları da stüdyomuz tarafından geliştirilmektedir.",
+        mascot_desc: "Resmi Stüdyo Maskot & Tasarım Varlığı",
+        os_section_title: "İşletim Sistemi",
+        os_section_badge: "Projeleri",
+        os_section_sub: "Farklı donanım mimarileri ve kullanım senaryoları için geliştirilen özgün işletim sistemi projelerimiz.",
+        tools_section_title: "Stüdyo Yazılım",
+        tools_section_badge: "Araçları",
+        tools_section_sub: "İşletim sistemlerimizi tamamlayan profesyonel masaüstü araçları ve yardımcı yazılımlar.",
+        card_hint: "Detayları, Ekran Görüntüsünü ve İndirmeyi Gör →",
+        tag_jubatus_os: "64-bit | Ana Sürüm",
+        jubatus_os_desc: "Günlük kullanım hedefiyle geliştirilen, modern masaüstü deneyimi ve geniş donanım desteği sunmayı amaçlayan 64-bit işletim sistemi projesidir.",
+        jubatus_os_f1: "GNOME Masaüstü Ortamı",
+        jubatus_os_f2: "jps-64 Paket Yöneticisi Altyapısı",
+        jubatus_os_f3: "Optimizasyon ve Kararlılık Odaklı",
+        tag_jubatus_lite: "32-bit & 64-bit | Hafif Sistem",
+        jubatus_lite_desc: "Düşük donanımlı ve eski bilgisayarlar için optimize edilmiş, hafif kaynak tüketimi sunmayı hedefleyen sistem sürümüdür.",
+        jubatus_lite_f1: "Hafif XFCE Masaüstü Arayüzü",
+        jubatus_lite_f2: "jps-32 / jps-64 Paket Yöneticisi Desteği",
+        jubatus_lite_f3: "Düşük Donanım Tüketimi",
+        tag_solara: "64-bit | Bağımsız Depo",
+        solara_desc: "XFCE masaüstü ortamını kullanan ve kendi solpkg paket yönetimi ile bağımsız paket deposunu sunmayı hedefleyen bir Linux tabanlı işletim sistemi projesidir.",
+        solara_f1: "XFCE Masaüstü Deneyimi",
+        solara_f2: "Özel solpkg Paket Sistemi",
+        solara_f3: "Linux Tabanlı Altyapı",
+        tag_hurd: "Deneysel | Test Sürümü",
+        hurd_desc: "GNU/Hurd altyapısı üzerinde geliştirilen, özel sistem araçları ve paket yönetimi entegrasyonlarını denemeyi amaçlayan deneysel bir işletim sistemi projesidir.",
+        hurd_f1: "GNU/Hurd Çekirdek Altyapısı",
+        hurd_f2: "APT ve JPS Entegrasyonu",
+        hurd_f3: "Geliştirici Test Sürümü",
+        tag_jedi: "Dokunmatik | Akıllı Tahta Sürümü",
+        jedi_desc: "Dokunmatik akıllı tahtalar için özel olarak optimize edilmiş; eğitim ve sunum odaklı arayüz deneyimi sunan Jubatus Educational Digital Interface sürümüdür.",
+        jedi_f1: "Dokunmatik Akıllı Tahta Optimizasyonu",
+        jedi_f2: "Jubatus Educational Digital Interface",
+        jedi_f3: "Eğitim ve Sunum Odaklı Deneyim",
+        tag_backup: "Kararlı Sürüm | Masaüstü Aracı",
+        backup_desc: "Akıllı delta yedekleme, snapshot sistemi, anlık geri yükleme, duraklatma/iptal özellikleri ve disk alanı kontrolü sunan profesyonel yedekleme aracı.",
+        backup_f1: "Akıllı Delta Yedekleme & Snapshot",
+        backup_f2: "Geri Yükleme ve Disk Alanı Kontrolü",
+        backup_f3: "Modern Koyu Tema & Tkinter Arayüzü",
+        modal_arch_title: "Proje Mimarisi ve Hedef",
+        modal_about_title: "Proje Hakkında",
+        modal_features_title: "Öne Çıkan Teknik Özellikler",
+        modal_features_arch_title: "Öne Çıkan Özellikler ve Mimari",
+        modal_backup_features_title: "Öne Çıkan Özellikler",
+        modal_jubatus_os_title: "Jubatus OS 2.0 - Kapsamlı Sistem Detayları",
+        modal_jubatus_os_p1: "Jubatus OS 2.0, Xyronix Studios tarafından geliştirilen amiral gemisi niteliğinde, son derece kararlı ve modern bir 64-bit işletim sistemi projesidir. Günlük masaüstü kullanımını en üst düzey performansla buluşturmak, kullanıcıya akıcı ve profesyonel bir çalışma ortamı sunmak için sıfırdan optimize edilmiştir.",
+        modal_jps_title: "jps-64 Paket Yönetim Sistemi",
+        modal_jubatus_os_p2: "Sistemin kalbinde, stüdyonun özel olarak geliştirdiği <code>jps-64</code> paket yöneticisi yer alır. 64-bit mimariye tam entegre çalışan bu altyapı sayesinde kullanıcılar;",
+        modal_jubatus_os_li1: "Komut satırı üzerinden veya özel grafik arayüzlerle hızlı paket kurulumu, güncellemesi ve kaldırılması işlemleri gerçekleştirebilir,",
+        modal_jubatus_os_li2: "Okul projeleri ve stüdyo yazılımları için özel olarak yapılandırılmış <code>student-projects</code> gibi özel depolara kolayca erişebilir,",
+        modal_jubatus_os_li3: "Git entegrasyonlu betikler sayesinde paket bağımlılıklarını güvenli ve hatasız bir şekilde yönetebilir.",
+        modal_jubatus_os_f1: "<strong>GNOME Masaüstü Ortamı:</strong> Özelleştirilmiş tema bileşenleri, pürüzsüz pencere geçişleri ve modern uygulama çekmecesi yerleşimi.",
+        modal_jubatus_os_f2: "<strong>Gelişmiş Donanım Uyumluluğu:</strong> Geniş sürücü desteği sayesinde modern işlemci ve grafik kartlarıyla kusursuz uyum.",
+        modal_jubatus_os_f3: "<strong>Güvenlik ve Kararlılık:</strong> Arka plan servisleri optimize edilerek minimum kaynak tüketimi ve maksimum sistem güvenliği hedeflenmiştir.",
+        modal_download_jubatus_os: "📥 Jubatus OS 2.0 (.ISO İndir)",
+        modal_jubatus_lite_title: "Jubatus Lite 1.0 - Kapsamlı Sistem Detayları",
+        modal_jubatus_lite_p1: "Jubatus Lite 1.0, düşük donanımlı, eski nesil veya sistem kaynakları kısıtlı bilgisayarları yeniden hayata döndürmek amacıyla özel olarak optimize edilmiş hafif sistem sürümüdür. Gereksiz hiçbir arka plan yükü barındırmayan yalın ve hızlı bir mimari sunar.",
+        modal_jps32_title: "jps-32 ve jps-64 Paket Yönetim Sistemi",
+        modal_jubatus_lite_p2: "Donanım tercihine göre hafifletilmiş paket yöneticileriyle birlikte gelir:",
+        modal_jubatus_lite_li1: "32-bit ve 64-bit mimarilerle tam uyumlu çalışarak paket indirme ve derleme süreçlerinde minimum kaynak harcar,",
+        modal_jubatus_lite_li2: "Hafif komut seti tabanlı depolarla etkileşime girerek yazılım yönetimini zahmetsiz hale getirir,",
+        modal_jubatus_lite_li3: "Eğitim laboratuvarları ve farklı donanımlar için optimize edilmiş paket depolarını destekler.",
+        modal_jubatus_lite_f1: "<strong>Hafif XFCE Masaüstü Arayüzü:</strong> Sistem belleğini minimumda tutan, son derece hızlı ve özelleştirilebilir pencere yöneticisi.",
+        modal_jubatus_lite_f2: "<strong>Düşük Kaynak Tüketimi:</strong> Çok düşük RAM ve CPU kullanımıyla sistemlerde yağ gibi akıcı performans.",
+        modal_jubatus_lite_f3: "<strong>Hızlandırılmış Açılış Süreleri:</strong> Budanmış servis listesi sayesinde saniyeler içinde masaüstüne ulaşım.",
+        modal_download_lite_32: "📥 Jubatus Lite 32-bit (.ISO İndir)",
+        modal_download_lite_64: "📥 Jubatus Lite 64-bit (.ISO İndir)",
+        modal_solara_title: "Solara OS 1.0 - Kapsamlı Sistem Detayları",
+        modal_solara_p1: "Solara OS 1.0, XFCE masaüstü ortamının hızını ve esnekliğini kendine has bağımsız depo mimarisiyle buluşturan 64-bit Linux tabanlı işletim sistemi projesidir.",
+        modal_solara_li1: "<strong>Özel solpkg Paket Yöneticisi:</strong> Kendi bağımsız paket deposundan paket yönetimi sağlayan sistem altyapısı.",
+        modal_solara_li2: "<strong>Şık XFCE Deneyimi:</strong> Performanstan ödün vermeyen modern masaüstü yerleşimi ve özel stüdyo temaları.",
+        modal_solara_li3: "<strong>Bağımsız Ekosistem:</strong> Xyronix stüdyo standartlarına uygun özel sistem ayarları ve araç setleri.",
+        modal_download_solara: "📥 Solara OS 1.0 (.ISO İndir)",
+        modal_hurd_title: "Jubatus Hurd 1.0 - Kapsamlı Sistem Detayları",
+        modal_hurd_p1: "Jubatus Hurd 1.0, GNU/Hurd mikrokekirdek mimarisi üzerinde araştırma yapmak ve yeni nesil sistem bileşenlerini test etmek amacıyla geliştirilen deneysel bir sürümdür.",
+        modal_hurd_li1: "<strong>GNU/Hurd Çekirdek Altyapısı:</strong> Geleneksel monolitik çekirdekler yerine sunucu tabanlı mikrokekirdek yaklaşımı.",
+        modal_hurd_li2: "<strong>APT ve JPS Entegrasyon Denemeleri:</strong> Farklı paket yöneticisi ekosistemlerinin Hurd üzerinde koşturulması.",
+        modal_hurd_li3: "<strong>Geliştirici Odaklı Yapı:</strong> Tamamen deneysel ve ileri düzey testler için tasarlanmış altyapı.",
+        modal_download_hurd: "📥 Jubatus Hurd 1.0 (Drive Klasörünü İndir)",
+        modal_jedi_title: "Jubatus Jedi - Kapsamlı Sistem Detayları",
+        modal_jedi_p1: "<strong>Jubatus Jedi</strong> (Jubatus Educational Digital Interface), dokunmatik akıllı tahtalar için özel olarak geliştirilmiş, sınıflar ve eğitim ortamları için optimize edilmiş yenilikçi bir sistem sürümüdür.",
+        modal_jedi_li1: "<strong>Dokunmatik Akıllı Tahta Optimizasyonu:</strong> Parmak ve kaleme duyarlı etkileşim özellikleri ile akıllı tahta donanımlarında kusursuz kullanım.",
+        modal_jedi_li2: "<strong>Eğitim Odaklı Arayüz:</strong> Sınıf içi sunumlar, ders içerikleri ve interaktif uygulamalar için kolay erişilebilir özel arayüz tasarımı.",
+        modal_jedi_li3: "<strong>Jubatus Ekosistem Entegrasyonu:</strong> Eğitim materyalleri ve stüdyo araçlarıyla tam uyumlu altyapı.",
+        modal_download_jedi: "📥 Jubatus Jedi (.ISO İndir)",
+        modal_backup_title: "Xyronix Backup V3 Pro - Kapsamlı Araç Detayları",
+        modal_backup_p1: "Xyronix Backup V3 Pro, sistem dosyalarınızı ve kişisel verilerinizi güvenle korumanız için geliştirilmiş gelişmiş bir masaüstü yedekleme uygulamasıdır.",
+        modal_backup_li1: "<strong>Akıllı Delta Yedekleme:</strong> Yalnızca değişen verileri algılayarak yedekleme süresini ve depolama alanını minimuma indirir.",
+        modal_backup_li2: "<strong>Snapshot (Anlık Görüntü) Sistemi:</strong> Belirli zaman dilimlerindeki sistem durumlarını anlık olarak saklama ve geri yükleme.",
+        modal_backup_li3: "<strong>Gelişmiş Denetim:</strong> Duraklatma, iptal etme ve detaylı disk alanı analizi özellikleri.",
+        modal_backup_li4: "<strong>Modern Tkinter Arayüzü:</strong> Sistemle uyumlu koyu tema tasarımı.",
+        modal_download_backup: "📥 Xyronix Backup V3 Pro (Drive Klasörünü İndir)",
+        footer_rights: "Tüm hakları saklıdır.",
+        footer_leader: "Proje Lideri: Eren Mut",
+        footer_contributor: "Katkıda Bulunan: İnanç İnce",
+        mob_platforms: "Platformlar",
+        mob_language: "Dil",
+        mob_links: "Bağlantılar"
+      },
+      en: {
+        nav_about: "About",
+        nav_os: "Operating Systems",
+        nav_tools: "Software Tools",
+        nav_explore: "Explore Projects",
+        subnav_about: "About",
+        subnav_os: "Operating Systems",
+        subnav_tools: "Software Tools",
+        subnav_mascot: "Mascot",
+        subnav_social: "Social Media",
+        hero_title_line1: "Xyronix Studios",
+        hero_badge: "Operating System & Software Projects",
+        hero_subtext: "Xyronix Studios is an independent technology studio developing original operating systems, kernel architectures, system software, and utility tools. Our projects focus on different hardware architectures, custom package management systems, and innovative desktop environments.",
+        btn_view_os: "View Operating Systems",
+        btn_view_tools: "Software Tools",
+        btn_youtube: "Watch on YouTube",
+        about_title: "About Xyronix Studios",
+        about_text: "Xyronix Studios continues its development activities under the leadership of Eren Mut and with the valuable contributions of İnanç İnce. In addition to operating system projects such as Jubatus OS, Solara OS, Jubatus Hurd, and Jubatus Jedi, professional software tools like Xyronix Backup V3 Pro are also developed by our studio.",
+        mascot_desc: "Official Studio Mascot & Design Asset",
+        os_section_title: "Operating System",
+        os_section_badge: "Projects",
+        os_section_sub: "Our original operating system projects developed for different hardware architectures and usage scenarios.",
+        tools_section_title: "Studio Software",
+        tools_section_badge: "Tools",
+        tools_section_sub: "Professional desktop tools and utility software that complement our operating systems.",
+        card_hint: "View Details, Screenshot and Download →",
+        tag_jubatus_os: "64-bit | Main Release",
+        jubatus_os_desc: "A 64-bit operating system project developed for daily use, aiming to provide a modern desktop experience and broad hardware support.",
+        jubatus_os_f1: "GNOME Desktop Environment",
+        jubatus_os_f2: "jps-64 Package Manager Infrastructure",
+        jubatus_os_f3: "Optimization and Stability Focused",
+        tag_jubatus_lite: "32-bit & 64-bit | Lightweight System",
+        jubatus_lite_desc: "A system edition optimized for low-spec and older computers, aiming to provide lightweight resource consumption.",
+        jubatus_lite_f1: "Lightweight XFCE Desktop Interface",
+        jubatus_lite_f2: "jps-32 / jps-64 Package Manager Support",
+        jubatus_lite_f3: "Low Hardware Consumption",
+        tag_solara: "64-bit | Independent Repository",
+        solara_desc: "A Linux-based operating system project using the XFCE desktop environment and aiming to offer an independent package repository with its own solpkg package management.",
+        solara_f1: "XFCE Desktop Experience",
+        solara_f2: "Custom solpkg Package System",
+        solara_f3: "Linux-Based Infrastructure",
+        tag_hurd: "Experimental | Test Release",
+        hurd_desc: "An experimental operating system project developed on the GNU/Hurd infrastructure, aiming to test custom system tools and package management integrations.",
+        hurd_f1: "GNU/Hurd Kernel Infrastructure",
+        hurd_f2: "APT and JPS Integration",
+        hurd_f3: "Developer Test Release",
+        tag_jedi: "Touch | Smart Board Edition",
+        jedi_desc: "An edition specially optimized for touchscreen smart boards, offering an education and presentation-focused interface experience: Jubatus Educational Digital Interface.",
+        jedi_f1: "Touchscreen Smart Board Optimization",
+        jedi_f2: "Jubatus Educational Digital Interface",
+        jedi_f3: "Education and Presentation Focused Experience",
+        tag_backup: "Stable Release | Desktop Tool",
+        backup_desc: "A professional backup tool offering smart delta backup, snapshot system, instant restore, pause/cancel features, and disk space control.",
+        backup_f1: "Smart Delta Backup & Snapshot",
+        backup_f2: "Restore and Disk Space Control",
+        backup_f3: "Modern Dark Theme & Tkinter Interface",
+        modal_arch_title: "Project Architecture and Goal",
+        modal_about_title: "About the Project",
+        modal_features_title: "Highlighted Technical Features",
+        modal_features_arch_title: "Highlighted Features and Architecture",
+        modal_backup_features_title: "Highlighted Features",
+        modal_jubatus_os_title: "Jubatus OS 2.0 - Comprehensive System Details",
+        modal_jubatus_os_p1: "Jubatus OS 2.0 is a flagship, highly stable, and modern 64-bit operating system project developed by Xyronix Studios. It has been optimized from scratch to combine daily desktop use with top-level performance, offering users a fluent and professional working environment.",
+        modal_jps_title: "jps-64 Package Management System",
+        modal_jubatus_os_p2: "At the heart of the system lies the <code>jps-64</code> package manager specially developed by the studio. Thanks to this infrastructure fully integrated with 64-bit architecture, users can;",
+        modal_jubatus_os_li1: "Perform fast package installation, update, and removal operations via command line or custom graphical interfaces,",
+        modal_jubatus_os_li2: "Easily access special repositories like <code>student-projects</code> specially configured for school projects and studio software,",
+        modal_jubatus_os_li3: "Manage package dependencies safely and flawlessly thanks to Git-integrated scripts.",
+        modal_jubatus_os_f1: "<strong>GNOME Desktop Environment:</strong> Customized theme components, smooth window transitions, and modern application drawer layout.",
+        modal_jubatus_os_f2: "<strong>Advanced Hardware Compatibility:</strong> Flawless compatibility with modern processors and graphics cards thanks to broad driver support.",
+        modal_jubatus_os_f3: "<strong>Security and Stability:</strong> Background services are optimized for minimum resource consumption and maximum system security.",
+        modal_download_jubatus_os: "📥 Jubatus OS 2.0 (Download .ISO)",
+        modal_jubatus_lite_title: "Jubatus Lite 1.0 - Comprehensive System Details",
+        modal_jubatus_lite_p1: "Jubatus Lite 1.0 is a lightweight system edition specially optimized to revive low-spec, older generation, or resource-constrained computers. It offers a lean and fast architecture with no unnecessary background load.",
+        modal_jps32_title: "jps-32 and jps-64 Package Management System",
+        modal_jubatus_lite_p2: "It comes with lightweight package managers depending on hardware preference:",
+        modal_jubatus_lite_li1: "Works fully compatible with 32-bit and 64-bit architectures, consuming minimum resources during package download and compilation processes,",
+        modal_jubatus_lite_li2: "Interacts with lightweight command-set-based repositories, making software management effortless,",
+        modal_jubatus_lite_li3: "Supports repositories optimized for educational laboratories and various hardware.",
+        modal_jubatus_lite_f1: "<strong>Lightweight XFCE Desktop Interface:</strong> An extremely fast and customizable window manager that keeps system memory at a minimum.",
+        modal_jubatus_lite_f2: "<strong>Low Resource Consumption:</strong> Smooth performance like oil in systems with very low RAM and CPU usage.",
+        modal_jubatus_lite_f3: "<strong>Accelerated Boot Times:</strong> Reaching the desktop in seconds thanks to the pruned service list.",
+        modal_download_lite_32: "📥 Jubatus Lite 32-bit (Download .ISO)",
+        modal_download_lite_64: "📥 Jubatus Lite 64-bit (Download .ISO)",
+        modal_solara_title: "Solara OS 1.0 - Comprehensive System Details",
+        modal_solara_p1: "Solara OS 1.0 is a 64-bit Linux-based operating system project that combines the speed and flexibility of the XFCE desktop environment with its unique independent repository architecture.",
+        modal_solara_li1: "<strong>Custom solpkg Package Manager:</strong> System infrastructure providing package management from its own independent package repository.",
+        modal_solara_li2: "<strong>Stylish XFCE Experience:</strong> Modern desktop layout and custom studio themes without compromising performance.",
+        modal_solara_li3: "<strong>Independent Ecosystem:</strong> Custom system settings and tool sets compliant with Xyronix studio standards.",
+        modal_download_solara: "📥 Solara OS 1.0 (Download .ISO)",
+        modal_hurd_title: "Jubatus Hurd 1.0 - Comprehensive System Details",
+        modal_hurd_p1: "Jubatus Hurd 1.0 is an experimental edition developed to research on the GNU/Hurd microkernel architecture and test next-generation system components.",
+        modal_hurd_li1: "<strong>GNU/Hurd Kernel Infrastructure:</strong> Server-based microkernel approach instead of traditional monolithic kernels.",
+        modal_hurd_li2: "<strong>APT and JPS Integration Experiments:</strong> Running different package manager ecosystems on Hurd.",
+        modal_hurd_li3: "<strong>Developer-Oriented Structure:</strong> Infrastructure designed entirely for experimental and advanced testing.",
+        modal_download_hurd: "📥 Jubatus Hurd 1.0 (Download Drive Folder)",
+        modal_jedi_title: "Jubatus Jedi - Comprehensive System Details",
+        modal_jedi_p1: "<strong>Jubatus Jedi</strong> (Jubatus Educational Digital Interface) is an innovative system edition specially developed for touchscreen smart boards, optimized for classrooms and educational environments.",
+        modal_jedi_li1: "<strong>Touchscreen Smart Board Optimization:</strong> Flawless use on smart board hardware with finger and pen-sensitive interaction features.",
+        modal_jedi_li2: "<strong>Education-Focused Interface:</strong> Custom interface design with easy access for classroom presentations, course content, and interactive applications.",
+        modal_jedi_li3: "<strong>Jubatus Ecosystem Integration:</strong> Infrastructure fully compatible with educational materials and studio tools.",
+        modal_download_jedi: "📥 Jubatus Jedi (Download .ISO)",
+        modal_backup_title: "Xyronix Backup V3 Pro - Comprehensive Tool Details",
+        modal_backup_p1: "Xyronix Backup V3 Pro is an advanced desktop backup application developed to safely protect your system files and personal data.",
+        modal_backup_li1: "<strong>Smart Delta Backup:</strong> Minimizes backup time and storage space by detecting only changed data.",
+        modal_backup_li2: "<strong>Snapshot System:</strong> Instantly saving and restoring system states at specific time periods.",
+        modal_backup_li3: "<strong>Advanced Control:</strong> Pause, cancel, and detailed disk space analysis features.",
+        modal_backup_li4: "<strong>Modern Tkinter Interface:</strong> Dark theme design compatible with the system.",
+        modal_download_backup: "📥 Xyronix Backup V3 Pro (Download Drive Folder)",
+        footer_rights: "All rights reserved.",
+        footer_leader: "Project Leader: Eren Mut",
+        footer_contributor: "Contributor: İnanç İnce",
+        mob_platforms: "Platforms",
+        mob_language: "Language",
+        mob_links: "Links"
+      },
+      fr: {
+        nav_about: "À propos",
+        nav_os: "Systèmes d'exploitation",
+        nav_tools: "Outils logiciels",
+        nav_explore: "Explorer les projets",
+        subnav_about: "À propos",
+        subnav_os: "Systèmes d'exploitation",
+        subnav_tools: "Outils logiciels",
+        subnav_mascot: "Mascotte",
+        subnav_social: "Réseaux sociaux",
+        hero_title_line1: "Xyronix Studios",
+        hero_badge: "Projets de systèmes d'exploitation et logiciels",
+        hero_subtext: "Xyronix Studios est un studio technologique indépendant développant des systèmes d'exploitation originaux, des architectures de noyau, des logiciels système et des outils utilitaires. Nos projets se concentrent sur différentes architectures matérielles, des systèmes de gestion de paquets personnalisés et des environnements de bureau innovants.",
+        btn_view_os: "Voir les systèmes d'exploitation",
+        btn_view_tools: "Outils logiciels",
+        btn_youtube: "Regarder sur YouTube",
+        about_title: "À propos de Xyronix Studios",
+        about_text: "Xyronix Studios poursuit ses activités de développement sous la direction d'Eren Mut et avec les précieuses contributions d'İnanç İnce. Outre les projets de systèmes d'exploitation tels que Jubatus OS, Solara OS, Jubatus Hurd et Jubatus Jedi, des outils logiciels professionnels comme Xyronix Backup V3 Pro sont également développés par notre studio.",
+        mascot_desc: "Mascotte officielle du studio et élément de design",
+        os_section_title: "Systèmes d'exploitation",
+        os_section_badge: "Projets",
+        os_section_sub: "Nos projets originaux de systèmes d'exploitation développés pour différentes architectures matérielles et scénarios d'utilisation.",
+        tools_section_title: "Logiciels du studio",
+        tools_section_badge: "Outils",
+        tools_section_sub: "Outils de bureau professionnels et logiciels utilitaires complétant nos systèmes d'exploitation.",
+        card_hint: "Voir les détails, capture d'écran et téléchargement →",
+        tag_jubatus_os: "64 bits | Version principale",
+        jubatus_os_desc: "Un projet de système d'exploitation 64 bits développé pour un usage quotidien, visant à offrir une expérience de bureau moderne et un large support matériel.",
+        jubatus_os_f1: "Environnement de bureau GNOME",
+        jubatus_os_f2: "Infrastructure du gestionnaire de paquets jps-64",
+        jubatus_os_f3: "Axé sur l'optimisation et la stabilité",
+        tag_jubatus_lite: "32 bits & 64 bits | Système léger",
+        jubatus_lite_desc: "Une édition système optimisée pour les ordinateurs anciens et à faible configuration, visant à offrir une consommation de ressources légère.",
+        jubatus_lite_f1: "Interface de bureau XFCE légère",
+        jubatus_lite_f2: "Support du gestionnaire de paquets jps-32 / jps-64",
+        jubatus_lite_f3: "Faible consommation matérielle",
+        tag_solara: "64 bits | Dépôt indépendant",
+        solara_desc: "Un projet de système d'exploitation basé sur Linux utilisant l'environnement de bureau XFCE et visant à offrir un dépôt de paquets indépendant avec sa propre gestion de paquets solpkg.",
+        solara_f1: "Expérience de bureau XFCE",
+        solara_f2: "Système de paquets solpkg personnalisé",
+        solara_f3: "Infrastructure basée sur Linux",
+        tag_hurd: "Expérimental | Version de test",
+        hurd_desc: "Un projet de système d'exploitation expérimental développé sur l'infrastructure GNU/Hurd, visant à tester des outils système personnalisés et des intégrations de gestion de paquets.",
+        hurd_f1: "Infrastructure du noyau GNU/Hurd",
+        hurd_f2: "Intégration APT et JPS",
+        hurd_f3: "Version de test développeur",
+        tag_jedi: "Tactile | Édition tableau intelligent",
+        jedi_desc: "Une édition spécialement optimisée pour les tableaux blancs interactifs tactiles, offrant une expérience d'interface axée sur l'éducation et la présentation : Jubatus Educational Digital Interface.",
+        jedi_f1: "Optimisation pour tableau blanc interactif tactile",
+        jedi_f2: "Jubatus Educational Digital Interface",
+        jedi_f3: "Expérience axée sur l'éducation et la présentation",
+        tag_backup: "Version stable | Outil de bureau",
+        backup_desc: "Un outil de sauvegarde professionnel offrant une sauvegarde delta intelligente, un système d'instantanés, une restauration instantanée, des fonctions de pause/annulation et un contrôle de l'espace disque.",
+        backup_f1: "Sauvegarde Delta intelligente & Instantanés",
+        backup_f2: "Restauration et contrôle de l'espace disque",
+        backup_f3: "Thème sombre moderne & Interface Tkinter",
+        modal_arch_title: "Architecture et objectif du projet",
+        modal_about_title: "À propos du projet",
+        modal_features_title: "Caractéristiques techniques principales",
+        modal_features_arch_title: "Caractéristiques principales et architecture",
+        modal_backup_features_title: "Caractéristiques principales",
+        modal_jubatus_os_title: "Jubatus OS 2.0 - Détails complets du système",
+        modal_jubatus_os_p1: "Jubatus OS 2.0 est un projet de système d'exploitation 64 bits phare, très stable et moderne, développé par Xyronix Studios. Il a été optimisé à partir de zéro pour combiner l'utilisation quotidienne du bureau avec des performances de haut niveau, offrant aux utilisateurs un environnement de travail fluide et professionnel.",
+        modal_jps_title: "Système de gestion de paquets jps-64",
+        modal_jubatus_os_p2: "Au cœur du système se trouve le gestionnaire de paquets <code>jps-64</code> spécialement développé par le studio. Grâce à cette infrastructure entièrement intégrée à l'architecture 64 bits, les utilisateurs peuvent ;",
+        modal_jubatus_os_li1: "Effectuer des opérations rapides d'installation, de mise à jour et de suppression de paquets via la ligne de commande ou des interfaces graphiques personnalisées,",
+        modal_jubatus_os_li2: "Accéder facilement à des dépôts spéciaux comme <code>student-projects</code> spécialement configurés pour les projets scolaires et les logiciels du studio,",
+        modal_jubatus_os_li3: "Gérer les dépendances des paquets en toute sécurité et sans faille grâce aux scripts intégrés à Git.",
+        modal_jubatus_os_f1: "<strong>Environnement de bureau GNOME :</strong> Composants de thème personnalisés, transitions de fenêtres fluides et disposition moderne du tiroir d'applications.",
+        modal_jubatus_os_f2: "<strong>Compatibilité matérielle avancée :</strong> Compatibilité parfaite avec les processeurs et cartes graphiques modernes grâce à un large support de pilotes.",
+        modal_jubatus_os_f3: "<strong>Sécurité et stabilité :</strong> Les services en arrière-plan sont optimisés pour une consommation minimale de ressources et une sécurité système maximale.",
+        modal_download_jubatus_os: "📥 Jubatus OS 2.0 (Télécharger .ISO)",
+        modal_jubatus_lite_title: "Jubatus Lite 1.0 - Détails complets du système",
+        modal_jubatus_lite_p1: "Jubatus Lite 1.0 est une édition système légère spécialement optimisée pour faire revivre les ordinateurs à faible configuration, de génération plus ancienne ou à ressources limitées. Il offre une architecture épurée et rapide sans charge d'arrière-plan inutile.",
+        modal_jps32_title: "Système de gestion de paquets jps-32 et jps-64",
+        modal_jubatus_lite_p2: "Il est livré avec des gestionnaires de paquets allégés selon la préférence matérielle :",
+        modal_jubatus_lite_li1: "Fonctionne en parfaite compatibilité avec les architectures 32 bits et 64 bits, consommant un minimum de ressources lors des processus de téléchargement et de compilation des paquets,",
+        modal_jubatus_lite_li2: "Interagit avec des dépôts légers basés sur des ensembles de commandes, rendant la gestion des logiciels sans effort,",
+        modal_jubatus_lite_li3: "Prend en charge des dépôts optimisés pour les laboratoires éducatifs et divers matériels.",
+        modal_jubatus_lite_f1: "<strong>Interface de bureau XFCE légère :</strong> Un gestionnaire de fenêtres extrêmement rapide et personnalisable qui maintient la mémoire système au minimum.",
+        modal_jubatus_lite_f2: "<strong>Faible consommation de ressources :</strong> Performances fluides dans les systèmes avec une très faible utilisation de RAM et de CPU.",
+        modal_jubatus_lite_f3: "<strong>Temps de démarrage accélérés :</strong> Atteindre le bureau en quelques secondes grâce à la liste de services élaguée.",
+        modal_download_lite_32: "📥 Jubatus Lite 32 bits (Télécharger .ISO)",
+        modal_download_lite_64: "📥 Jubatus Lite 64 bits (Télécharger .ISO)",
+        modal_solara_title: "Solara OS 1.0 - Détails complets du système",
+        modal_solara_p1: "Solara OS 1.0 est un projet de système d'exploitation basé sur Linux 64 bits qui combine la vitesse et la flexibilité de l'environnement de bureau XFCE avec son architecture de dépôt indépendante unique.",
+        modal_solara_li1: "<strong>Gestionnaire de paquets solpkg personnalisé :</strong> Infrastructure système fournissant la gestion des paquets à partir de son propre dépôt de paquets indépendant.",
+        modal_solara_li2: "<strong>Expérience XFCE élégante :</strong> Disposition de bureau moderne et thèmes de studio personnalisés sans compromettre les performances.",
+        modal_solara_li3: "<strong>Écosystème indépendant :</strong> Paramètres système personnalisés et ensembles d'outils conformes aux normes du studio Xyronix.",
+        modal_download_solara: "📥 Solara OS 1.0 (Télécharger .ISO)",
+        modal_hurd_title: "Jubatus Hurd 1.0 - Détails complets du système",
+        modal_hurd_p1: "Jubatus Hurd 1.0 est une édition expérimentale développée pour la recherche sur l'architecture micro-noyau GNU/Hurd et pour tester des composants système de nouvelle génération.",
+        modal_hurd_li1: "<strong>Infrastructure du noyau GNU/Hurd :</strong> Approche micro-noyau basée sur des serveurs au lieu des noyaux monolithiques traditionnels.",
+        modal_hurd_li2: "<strong>Expériences d'intégration APT et JPS :</strong> Exécution de différents écosystèmes de gestionnaires de paquets sur Hurd.",
+        modal_hurd_li3: "<strong>Structure orientée développeur :</strong> Infrastructure conçue entièrement pour des tests expérimentaux et avancés.",
+        modal_download_hurd: "📥 Jubatus Hurd 1.0 (Télécharger le dossier Drive)",
+        modal_jedi_title: "Jubatus Jedi - Détails complets du système",
+        modal_jedi_p1: "<strong>Jubatus Jedi</strong> (Jubatus Educational Digital Interface) est une édition système innovante spécialement développée pour les tableaux blancs interactifs tactiles, optimisée pour les salles de classe et les environnements éducatifs.",
+        modal_jedi_li1: "<strong>Optimisation pour tableau blanc interactif tactile :</strong> Utilisation parfaite sur le matériel des tableaux blancs interactifs avec des fonctionnalités d'interaction sensibles au doigt et au stylet.",
+        modal_jedi_li2: "<strong>Interface axée sur l'éducation :</strong> Conception d'interface personnalisée avec accès facile pour les présentations en classe, le contenu des cours et les applications interactives.",
+        modal_jedi_li3: "<strong>Intégration de l'écosystème Jubatus :</strong> Infrastructure entièrement compatible avec les matériels éducatifs et les outils du studio.",
+        modal_download_jedi: "📥 Jubatus Jedi (Télécharger .ISO)",
+        modal_backup_title: "Xyronix Backup V3 Pro - Détails complets de l'outil",
+        modal_backup_p1: "Xyronix Backup V3 Pro est une application de sauvegarde de bureau avancée développée pour protéger en toute sécurité vos fichiers système et vos données personnelles.",
+        modal_backup_li1: "<strong>Sauvegarde Delta intelligente :</strong> Minimise le temps de sauvegarde et l'espace de stockage en détectant uniquement les données modifiées.",
+        modal_backup_li2: "<strong>Système d'instantanés :</strong> Sauvegarde et restauration instantanées des états du système à des périodes spécifiques.",
+        modal_backup_li3: "<strong>Contrôle avancé :</strong> Fonctionnalités de pause, d'annulation et d'analyse détaillée de l'espace disque.",
+        modal_backup_li4: "<strong>Interface Tkinter moderne :</strong> Conception de thème sombre compatible avec le système.",
+        modal_download_backup: "📥 Xyronix Backup V3 Pro (Télécharger le dossier Drive)",
+        footer_rights: "Tous droits réservés.",
+        footer_leader: "Chef de projet : Eren Mut",
+        footer_contributor: "Contributeur : İnanç İnce",
+        mob_platforms: "Plateformes",
+        mob_language: "Langue",
+        mob_links: "Liens"
+      },
+      de: {
+        nav_about: "Über uns",
+        nav_os: "Betriebssysteme",
+        nav_tools: "Software-Tools",
+        nav_explore: "Projekte erkunden",
+        subnav_about: "Über uns",
+        subnav_os: "Betriebssysteme",
+        subnav_tools: "Software-Tools",
+        subnav_mascot: "Maskottchen",
+        subnav_social: "Soziale Medien",
+        hero_title_line1: "Xyronix Studios",
+        hero_badge: "Betriebssystem- und Softwareprojekte",
+        hero_subtext: "Xyronix Studios ist ein unabhängiges Technologiestudio, das originale Betriebssysteme, Kernel-Architekturen, Systemsoftware und Hilfsprogramme entwickelt. Unsere Projekte konzentrieren sich auf verschiedene Hardware-Architekturen, benutzerdefinierte Paketverwaltungssysteme und innovative Desktop-Umgebungen.",
+        btn_view_os: "Betriebssysteme ansehen",
+        btn_view_tools: "Software-Tools",
+        btn_youtube: "Auf YouTube ansehen",
+        about_title: "Über Xyronix Studios",
+        about_text: "Xyronix Studios setzt seine Entwicklungsaktivitäten unter der Leitung von Eren Mut und mit den wertvollen Beiträgen von İnanç İnce fort. Neben Betriebssystemprojekten wie Jubatus OS, Solara OS, Jubatus Hurd und Jubatus Jedi werden auch professionelle Software-Tools wie Xyronix Backup V3 Pro von unserem Studio entwickelt.",
+        mascot_desc: "Offizielles Studio-Maskottchen & Design-Asset",
+        os_section_title: "Betriebssystem",
+        os_section_badge: "Projekte",
+        os_section_sub: "Unsere originellen Betriebssystemprojekte, die für verschiedene Hardware-Architekturen und Nutzungsszenarien entwickelt wurden.",
+        tools_section_title: "Studio-Software",
+        tools_section_badge: "Tools",
+        tools_section_sub: "Professionelle Desktop-Tools und Hilfssoftware, die unsere Betriebssysteme ergänzen.",
+        card_hint: "Details, Screenshot und Download ansehen →",
+        tag_jubatus_os: "64-Bit | Hauptversion",
+        jubatus_os_desc: "Ein 64-Bit-Betriebssystemprojekt, das für den täglichen Gebrauch entwickelt wurde und eine moderne Desktop-Erfahrung sowie breite Hardware-Unterstützung bieten soll.",
+        jubatus_os_f1: "GNOME-Desktop-Umgebung",
+        jubatus_os_f2: "jps-64 Paketmanager-Infrastruktur",
+        jubatus_os_f3: "Optimierungs- und Stabilitätsorientiert",
+        tag_jubatus_lite: "32-Bit & 64-Bit | Leichtes System",
+        jubatus_lite_desc: "Eine Systemedition, die für Computer mit geringer Ausstattung und ältere Computer optimiert wurde und einen geringen Ressourcenverbrauch bieten soll.",
+        jubatus_lite_f1: "Leichte XFCE-Desktop-Oberfläche",
+        jubatus_lite_f2: "jps-32 / jps-64 Paketmanager-Unterstützung",
+        jubatus_lite_f3: "Geringer Hardware-Verbrauch",
+        tag_solara: "64-Bit | Unabhängiges Repository",
+        solara_desc: "Ein Linux-basiertes Betriebssystemprojekt, das die XFCE-Desktop-Umgebung verwendet und ein unabhängiges Paket-Repository mit eigener solpkg-Paketverwaltung bieten soll.",
+        solara_f1: "XFCE-Desktop-Erfahrung",
+        solara_f2: "Benutzerdefiniertes solpkg-Paketsystem",
+        solara_f3: "Linux-basierte Infrastruktur",
+        tag_hurd: "Experimentell | Testversion",
+        hurd_desc: "Ein experimentelles Betriebssystemprojekt, das auf der GNU/Hurd-Infrastruktur entwickelt wurde und benutzerdefinierte Systemtools und Paketverwaltungsintegrationen testen soll.",
+        hurd_f1: "GNU/Hurd-Kernel-Infrastruktur",
+        hurd_f2: "APT- und JPS-Integration",
+        hurd_f3: "Entwickler-Testversion",
+        tag_jedi: "Touch | Smart-Board-Edition",
+        jedi_desc: "Eine speziell für Touchscreen-Smart-Boards optimierte Edition, die eine auf Bildung und Präsentation ausgerichtete Benutzeroberfläche bietet: Jubatus Educational Digital Interface.",
+        jedi_f1: "Touchscreen-Smart-Board-Optimierung",
+        jedi_f2: "Jubatus Educational Digital Interface",
+        jedi_f3: "Bildungs- und Präsentationsorientierte Erfahrung",
+        tag_backup: "Stabile Version | Desktop-Tool",
+        backup_desc: "Ein professionelles Backup-Tool mit intelligentem Delta-Backup, Snapshot-System, sofortiger Wiederherstellung, Pause-/Abbruch-Funktionen und Speicherplatzsteuerung.",
+        backup_f1: "Intelligentes Delta-Backup & Snapshot",
+        backup_f2: "Wiederherstellung und Speicherplatzsteuerung",
+        backup_f3: "Modernes dunkles Thema & Tkinter-Oberfläche",
+        modal_arch_title: "Projektarchitektur und Ziel",
+        modal_about_title: "Über das Projekt",
+        modal_features_title: "Hervorgehobene technische Merkmale",
+        modal_features_arch_title: "Hervorgehobene Merkmale und Architektur",
+        modal_backup_features_title: "Hervorgehobene Merkmale",
+        modal_jubatus_os_title: "Jubatus OS 2.0 - Umfassende Systemdetails",
+        modal_jubatus_os_p1: "Jubatus OS 2.0 ist ein Flaggschiff-Betriebssystemprojekt, das von Xyronix Studios entwickelt wurde und äußerst stabil und modern ist. Es wurde von Grund auf optimiert, um die tägliche Desktop-Nutzung mit Spitzenleistung zu verbinden und den Benutzern eine flüssige und professionelle Arbeitsumgebung zu bieten.",
+        modal_jps_title: "jps-64 Paketverwaltungssystem",
+        modal_jubatus_os_p2: "Im Herzen des Systems befindet sich der <code>jps-64</code>-Paketmanager, der speziell vom Studio entwickelt wurde. Dank dieser vollständig in die 64-Bit-Architektur integrierten Infrastruktur können Benutzer;",
+        modal_jubatus_os_li1: "Schnelle Paketinstallation, -aktualisierung und -entfernung über die Kommandozeile oder benutzerdefinierte grafische Oberflächen durchführen,",
+        modal_jubatus_os_li2: "Leicht auf spezielle Repositorys wie <code>student-projects</code> zugreifen, die speziell für Schulprojekte und Studio-Software konfiguriert sind,",
+        modal_jubatus_os_li3: "Paketabhängigkeiten dank Git-integrierter Skripte sicher und fehlerfrei verwalten.",
+        modal_jubatus_os_f1: "<strong>GNOME-Desktop-Umgebung:</strong> Angepasste Themenkomponenten, flüssige Fensterübergänge und modernes Anwendungsschubladen-Layout.",
+        modal_jubatus_os_f2: "<strong>Erweiterte Hardware-Kompatibilität:</strong> Einwandfreie Kompatibilität mit modernen Prozessoren und Grafikkarten dank breiter Treiberunterstützung.",
+        modal_jubatus_os_f3: "<strong>Sicherheit und Stabilität:</strong> Hintergrunddienste sind für minimalen Ressourcenverbrauch und maximale Systemsicherheit optimiert.",
+        modal_download_jubatus_os: "📥 Jubatus OS 2.0 (.ISO herunterladen)",
+        modal_jubatus_lite_title: "Jubatus Lite 1.0 - Umfassende Systemdetails",
+        modal_jubatus_lite_p1: "Jubatus Lite 1.0 ist eine leichte Systemedition, die speziell optimiert wurde, um Computer mit geringer Ausstattung, ältere Generationen oder ressourcenbeschränkte Computer wiederzubeleben. Sie bietet eine schlanke und schnelle Architektur ohne unnötige Hintergrundlast.",
+        modal_jps32_title: "jps-32 und jps-64 Paketverwaltungssystem",
+        modal_jubatus_lite_p2: "Es wird mit leichteren Paketmanagern je nach Hardware-Präferenz geliefert:",
+        modal_jubatus_lite_li1: "Arbeitet voll kompatibel mit 32-Bit- und 64-Bit-Architekturen und verbraucht minimal Ressourcen während Paket-Download- und Kompilierungsprozessen,",
+        modal_jubatus_lite_li2: "Interagiert mit leichten befehlssatzbasierten Repositorys und macht die Softwareverwaltung mühelos,",
+        modal_jubatus_lite_li3: "Unterstützt Repositorys, die für Bildungslabore und verschiedene Hardware optimiert sind.",
+        modal_jubatus_lite_f1: "<strong>Leichte XFCE-Desktop-Oberfläche:</strong> Ein extrem schneller und anpassbarer Fenstermanager, der den Systemspeicher auf ein Minimum beschränkt.",
+        modal_jubatus_lite_f2: "<strong>Geringer Ressourcenverbrauch:</strong> Flüssige Leistung in Systemen mit sehr geringer RAM- und CPU-Nutzung.",
+        modal_jubatus_lite_f3: "<strong>Beschleunigte Startzeiten:</strong> Erreichen des Desktops in Sekunden dank der bereinigten Dienstliste.",
+        modal_download_lite_32: "📥 Jubatus Lite 32-Bit (.ISO herunterladen)",
+        modal_download_lite_64: "📥 Jubatus Lite 64-Bit (.ISO herunterladen)",
+        modal_solara_title: "Solara OS 1.0 - Umfassende Systemdetails",
+        modal_solara_p1: "Solara OS 1.0 ist ein 64-Bit-Linux-basiertes Betriebssystemprojekt, das die Geschwindigkeit und Flexibilität der XFCE-Desktop-Umgebung mit seiner einzigartigen unabhängigen Repository-Architektur verbindet.",
+        modal_solara_li1: "<strong>Benutzerdefinierter solpkg-Paketmanager:</strong> Systeminfrastruktur, die Paketverwaltung aus ihrem eigenen unabhängigen Paket-Repository bietet.",
+        modal_solara_li2: "<strong>Stilvolle XFCE-Erfahrung:</strong> Modernes Desktop-Layout und benutzerdefinierte Studio-Themen ohne Leistungseinbußen.",
+        modal_solara_li3: "<strong>Unabhängiges Ökosystem:</strong> Benutzerdefinierte Systemeinstellungen und Toolsets, die den Standards des Xyronix-Studios entsprechen.",
+        modal_download_solara: "📥 Solara OS 1.0 (.ISO herunterladen)",
+        modal_hurd_title: "Jubatus Hurd 1.0 - Umfassende Systemdetails",
+        modal_hurd_p1: "Jubatus Hurd 1.0 ist eine experimentelle Edition, die entwickelt wurde, um auf der GNU/Hurd-Mikrokernel-Architektur zu forschen und Systemkomponenten der nächsten Generation zu testen.",
+        modal_hurd_li1: "<strong>GNU/Hurd-Kernel-Infrastruktur:</strong> Serverbasierter Mikrokernel-Ansatz anstelle traditioneller monolithischer Kernel.",
+        modal_hurd_li2: "<strong>APT- und JPS-Integrations Experimente:</strong> Ausführen verschiedener Paketmanager-Ökosysteme auf Hurd.",
+        modal_hurd_li3: "<strong>Entwicklerorientierte Struktur:</strong> Infrastruktur, die ausschließlich für experimentelle und fortgeschrittene Tests entwickelt wurde.",
+        modal_download_hurd: "📥 Jubatus Hurd 1.0 (Drive-Ordner herunterladen)",
+        modal_jedi_title: "Jubatus Jedi - Umfassende Systemdetails",
+        modal_jedi_p1: "<strong>Jubatus Jedi</strong> (Jubatus Educational Digital Interface) ist eine innovative Systemedition, die speziell für Touchscreen-Smart-Boards entwickelt und für Klassenzimmer und Bildungsumgebungen optimiert wurde.",
+        modal_jedi_li1: "<strong>Touchscreen-Smart-Board-Optimierung:</strong> Einwandfreie Nutzung auf Smart-Board-Hardware mit finger- und stiftempfindlichen Interaktionsfunktionen.",
+        modal_jedi_li2: "<strong>Bildungsorientierte Oberfläche:</strong> Benutzerdefiniertes Oberflächendesign mit einfachem Zugriff für Klassenzimmerpräsentationen, Kursinhalte und interaktive Anwendungen.",
+        modal_jedi_li3: "<strong>Jubatus-Ökosystem-Integration:</strong> Infrastruktur, die vollständig mit Bildungsmaterialien und Studio-Tools kompatibel ist.",
+        modal_download_jedi: "📥 Jubatus Jedi (.ISO herunterladen)",
+        modal_backup_title: "Xyronix Backup V3 Pro - Umfassende Tool-Details",
+        modal_backup_p1: "Xyronix Backup V3 Pro ist eine fortschrittliche Desktop-Backup-Anwendung, die entwickelt wurde, um Ihre Systemdateien und persönlichen Daten sicher zu schützen.",
+        modal_backup_li1: "<strong>Intelligentes Delta-Backup:</strong> Minimiert Backup-Zeit und Speicherplatz durch Erkennung nur geänderter Daten.",
+        modal_backup_li2: "<strong>Snapshot-System:</strong> Sofortiges Speichern und Wiederherstellen von Systemzuständen zu bestimmten Zeiträumen.",
+        modal_backup_li3: "<strong>Erweiterte Steuerung:</strong> Pause-, Abbruch- und detaillierte Speicherplatzanalysefunktionen.",
+        modal_backup_li4: "<strong>Moderne Tkinter-Oberfläche:</strong> Dunkles Thema-Design, kompatibel mit dem System.",
+        modal_download_backup: "📥 Xyronix Backup V3 Pro (Drive-Ordner herunterladen)",
+        footer_rights: "Alle Rechte vorbehalten.",
+        footer_leader: "Projektleiter: Eren Mut",
+        footer_contributor: "Mitwirkender: İnanç İnce",
+        mob_platforms: "Plattformen",
+        mob_language: "Sprache",
+        mob_links: "Links"
+      },
+      az: {
+        nav_about: "Haqqında",
+        nav_os: "Əməliyyat Sistemləri",
+        nav_tools: "Proqram Alətləri",
+        nav_explore: "Layihələri Kəşf Et",
+        subnav_about: "Haqqında",
+        subnav_os: "Əməliyyat Sistemləri",
+        subnav_tools: "Proqram Alətləri",
+        subnav_mascot: "Maskot",
+        subnav_social: "Sosial Media",
+        hero_title_line1: "Xyronix Studios",
+        hero_badge: "Əməliyyat Sistemi və Proqram Layihələri",
+        hero_subtext: "Xyronix Studios orijinal əməliyyat sistemləri, nüvə arxitekturaları, sistem proqram təminatı və köməkçi alətlər hazırlayan müstəqil texnologiya studiyasıdır. Layihələrimiz müxtəlif aparat arxitekturaları, xüsusi paket idarəetmə sistemləri və innovativ masaüstü mühitlərinə yönəlmişdir.",
+        btn_view_os: "Əməliyyat Sistemlərinə Bax",
+        btn_view_tools: "Proqram Alətləri",
+        btn_youtube: "YouTube-da İzlə",
+        about_title: "Xyronix Studios Haqqında",
+        about_text: "Xyronix Studios Eren Mutun rəhbərliyi və İnanç İncənin dəyərli töhfələri ilə inkişaf fəaliyyətlərini davam etdirir. Jubatus OS, Solara OS, Jubatus Hurd və Jubatus Jedi kimi əməliyyat sistemi layihələri ilə yanaşı, Xyronix Backup V3 Pro kimi peşəkar proqram alətləri də studiyamız tərəfindən hazırlanır.",
+        mascot_desc: "Rəsmi Studiya Maskotu və Dizayn Aktivı",
+        os_section_title: "Əməliyyat Sistemi",
+        os_section_badge: "Layihələri",
+        os_section_sub: "Müxtəlif aparat arxitekturaları və istifadə ssenariləri üçün hazırlanmış orijinal əməliyyat sistemi layihələrimiz.",
+        tools_section_title: "Studiya Proqramları",
+        tools_section_badge: "Alətləri",
+        tools_section_sub: "Əməliyyat sistemlərimizi tamamlayan peşəkar masaüstü alətləri və köməkçi proqramlar.",
+        card_hint: "Detalları, Ekran Görüntüsünü və Yükləməni Gör →",
+        tag_jubatus_os: "64-bit | Əsas Buraxılış",
+        jubatus_os_desc: "Gündəlik istifadə üçün hazırlanmış, müasir masaüstü təcrübəsi və geniş aparat dəstəyi təqdim etməyi hədəfləyən 64-bit əməliyyat sistemi layihəsidir.",
+        jubatus_os_f1: "GNOME Masaüstü Mühiti",
+        jubatus_os_f2: "jps-64 Paket Meneceri İnfrastrukturu",
+        jubatus_os_f3: "Optimallaşdırma və Sabitlik Yönümlü",
+        tag_jubatus_lite: "32-bit & 64-bit | Yüngül Sistem",
+        jubatus_lite_desc: "Aşağı aparatlı və köhnə kompüterlər üçün optimallaşdırılmış, yüngül resurs istehlakı təqdim etməyi hədəfləyən sistem buraxılışıdır.",
+        jubatus_lite_f1: "Yüngül XFCE Masaüstü İnterfeysi",
+        jubatus_lite_f2: "jps-32 / jps-64 Paket Meneceri Dəstəyi",
+        jubatus_lite_f3: "Aşağı Aparat İstehlakı",
+        tag_solara: "64-bit | Müstəqil Repozitoriya",
+        solara_desc: "XFCE masaüstü mühitini istifadə edən və öz solpkg paket idarəetməsi ilə müstəqil paket repozitoriyası təqdim etməyi hədəfləyən Linux əsaslı əməliyyat sistemi layihəsidir.",
+        solara_f1: "XFCE Masaüstü Təcrübəsi",
+        solara_f2: "Xüsusi solpkg Paket Sistemi",
+        solara_f3: "Linux Əsaslı İnfrastruktur",
+        tag_hurd: "Eksperimental | Test Buraxılışı",
+        hurd_desc: "GNU/Hurd infrastrukturu üzərində hazırlanmış, xüsusi sistem alətləri və paket idarəetmə inteqrasiyalarını sınamağı hədəfləyən eksperimental əməliyyat sistemi layihəsidir.",
+        hurd_f1: "GNU/Hurd Nüvə İnfrastrukturu",
+        hurd_f2: "APT və JPS İnteqrasiyası",
+        hurd_f3: "Developer Test Buraxılışı",
+        tag_jedi: "Toxunma | Ağıllı Lövhə Buraxılışı",
+        jedi_desc: "Toxunma ekranlı ağıllı lövhələr üçün xüsusi optimallaşdırılmış, təhsil və təqdimat yönümlü interfeys təcrübəsi təqdim edən Jubatus Educational Digital Interface buraxılışıdır.",
+        jedi_f1: "Toxunma Ağıllı Lövhə Optimallaşdırması",
+        jedi_f2: "Jubatus Educational Digital Interface",
+        jedi_f3: "Təhsil və Təqdimat Yönümlü Təcrübə",
+        tag_backup: "Sabit Buraxılış | Masaüstü Aləti",
+        backup_desc: "Ağıllı delta ehtiyat nüsxəsi, snapshot sistemi, ani bərpa, fasilə/ləğv xüsusiyyətləri və disk sahəsi nəzarəti təqdim edən peşəkar ehtiyat nüsxə alətidir.",
+        backup_f1: "Ağıllı Delta Ehtiyat Nüsxəsi & Snapshot",
+        backup_f2: "Bərpa və Disk Sahəsi Nəzarəti",
+        backup_f3: "Müasir Tünd Tema & Tkinter İnterfeysi",
+        modal_arch_title: "Layihə Arxitekturası və Məqsədi",
+        modal_about_title: "Layihə Haqqında",
+        modal_features_title: "Önə Çıxan Texniki Xüsusiyyətlər",
+        modal_features_arch_title: "Önə Çıxan Xüsusiyyətlər və Arxitektura",
+        modal_backup_features_title: "Önə Çıxan Xüsusiyyətlər",
+        modal_jubatus_os_title: "Jubatus OS 2.0 - Əhatəli Sistem Detalları",
+        modal_jubatus_os_p1: "Jubatus OS 2.0, Xyronix Studios tərəfindən hazırlanmış flaqman xarakterli, son dərəcə sabit və müasir 64-bit əməliyyat sistemi layihəsidir. Gündəlik masaüstü istifadəsini ən yüksək səviyyəli performansla birləşdirmək, istifadəçiyə axıcı və peşəkar iş mühiti təqdim etmək üçün sıfırdan optimallaşdırılmışdır.",
+        modal_jps_title: "jps-64 Paket İdarəetmə Sistemi",
+        modal_jubatus_os_p2: "Sistemin qəlbində studiyanın xüsusi olaraq hazırladığı <code>jps-64</code> paket meneceri yer alır. 64-bit arxitekturaya tam inteqrasiya olunmuş bu infrastruktur sayəsində istifadəçilər;",
+        modal_jubatus_os_li1: "Komanda sətri vasitəsilə və ya xüsusi qrafik interfeyslərlə sürətli paket quraşdırma, yeniləmə və silmə əməliyyatlarını həyata keçirə bilər,",
+        modal_jubatus_os_li2: "Məktəb layihələri və studiya proqramları üçün xüsusi konfiqurasiya edilmiş <code>student-projects</code> kimi xüsusi repozitoriyalara asanlıqla daxil ola bilər,",
+        modal_jubatus_os_li3: "Git inteqrasiyalı skriptlər sayəsində paket asılılıqlarını təhlükəsiz və xətasız idarə edə bilər.",
+        modal_jubatus_os_f1: "<strong>GNOME Masaüstü Mühiti:</strong> Fərdiləşdirilmiş tema komponentləri, hamar pəncərə keçidləri və müasir tətbiq siyirməsi yerləşimi.",
+        modal_jubatus_os_f2: "<strong>İnkişaf etmiş Aparat Uyğunluğu:</strong> Geniş sürücü dəstəyi sayəsində müasir prosessor və qrafik kartlarla qüsursuz uyğunluq.",
+        modal_jubatus_os_f3: "<strong>Təhlükəsizlik və Sabitlik:</strong> Fon xidmətləri minimum resurs istehlakı və maksimum sistem təhlükəsizliyi üçün optimallaşdırılmışdır.",
+        modal_download_jubatus_os: "📥 Jubatus OS 2.0 (.ISO Yüklə)",
+        modal_jubatus_lite_title: "Jubatus Lite 1.0 - Əhatəli Sistem Detalları",
+        modal_jubatus_lite_p1: "Jubatus Lite 1.0, aşağı aparatlı, köhnə nəsil və ya sistem resursları məhdud kompüterləri yenidən həyata qaytarmaq üçün xüsusi optimallaşdırılmış yüngül sistem buraxılışıdır. Lazımsız heç bir fon yükü daşımayan yalın və sürətli arxitektura təqdim edir.",
+        modal_jps32_title: "jps-32 və jps-64 Paket İdarəetmə Sistemi",
+        modal_jubatus_lite_p2: "Aparat seçiminə görə yüngülləşdirilmiş paket menecerləri ilə birlikdə gəlir:",
+        modal_jubatus_lite_li1: "32-bit və 64-bit arxitekturalarla tam uyğun işləyərək paket yükləmə və kompilyasiya proseslərində minimum resurs sərf edir,",
+        modal_jubatus_lite_li2: "Yüngül əmr dəsti əsaslı repozitoriyalarla qarşılıqlı əlaqə quraraq proqram idarəetməsini asanlaşdırır,",
+        modal_jubatus_lite_li3: "Təhsil laboratoriyaları və müxtəlif aparatlar üçün optimallaşdırılmış paket repozitoriyalarını dəstəkləyir.",
+        modal_jubatus_lite_f1: "<strong>Yüngül XFCE Masaüstü İnterfeysi:</strong> Sistem yaddaşını minimumda saxlayan, son dərəcə sürətli və fərdiləşdirilə bilən pəncərə meneceri.",
+        modal_jubatus_lite_f2: "<strong>Aşağı Resurs İstehlakı:</strong> Çox aşağı RAM və CPU istifadəsi ilə sistemlərdə yağ kimi axıcı performans.",
+        modal_jubatus_lite_f3: "<strong>Sürətləndirilmiş Açılış Vaxtları:</strong> Budanmış xidmət siyahısı sayəsində saniyələr içində masaüstünə çatma.",
+        modal_download_lite_32: "📥 Jubatus Lite 32-bit (.ISO Yüklə)",
+        modal_download_lite_64: "📥 Jubatus Lite 64-bit (.ISO Yüklə)",
+        modal_solara_title: "Solara OS 1.0 - Əhatəli Sistem Detalları",
+        modal_solara_p1: "Solara OS 1.0, XFCE masaüstü mühitinin sürətini və elastikliyini özünəməxsus müstəqil repo arxitekturası ilə birləşdirən 64-bit Linux əsaslı əməliyyat sistemi layihəsidir.",
+        modal_solara_li1: "<strong>Xüsusi solpkg Paket Meneceri:</strong> Öz müstəqil paket repozitoriyasından paket idarəetməsi təmin edən sistem infrastrukturu.",
+        modal_solara_li2: "<strong>Şık XFCE Təcrübəsi:</strong> Performansdan güzəştə getməyən müasir masaüstü yerləşimi və xüsusi studiya temaları.",
+        modal_solara_li3: "<strong>Müstəqil Ekosistem:</strong> Xyronix studiya standartlarına uyğun xüsusi sistem ayarları və alət dəstləri.",
+        modal_download_solara: "📥 Solara OS 1.0 (.ISO Yüklə)",
+        modal_hurd_title: "Jubatus Hurd 1.0 - Əhatəli Sistem Detalları",
+        modal_hurd_p1: "Jubatus Hurd 1.0, GNU/Hurd mikronüvə arxitekturası üzərində araşdırma aparmaq və yeni nəsil sistem komponentlərini sınamaq məqsədilə hazırlanmış eksperimental buraxılışdır.",
+        modal_hurd_li1: "<strong>GNU/Hurd Nüvə İnfrastrukturu:</strong> Ənənəvi monolitik nüvələr yerinə server əsaslı mikronüvə yanaşması.",
+        modal_hurd_li2: "<strong>APT və JPS İnteqrasiya Təcrübələri:</strong> Fərqli paket meneceri ekosistemlərinin Hurd üzərində işlədilməsi.",
+        modal_hurd_li3: "<strong>Developer Yönümlü Struktur:</strong> Tamamilə eksperimental və qabaqcıl testlər üçün hazırlanmış infrastruktur.",
+        modal_download_hurd: "📥 Jubatus Hurd 1.0 (Drive Qovluğunu Yüklə)",
+        modal_jedi_title: "Jubatus Jedi - Əhatəli Sistem Detalları",
+        modal_jedi_p1: "<strong>Jubatus Jedi</strong> (Jubatus Educational Digital Interface), toxunma ekranlı ağıllı lövhələr üçün xüsusi hazırlanmış, siniflər və təhsil mühitləri üçün optimallaşdırılmış innovativ sistem buraxılışıdır.",
+        modal_jedi_li1: "<strong>Toxunma Ağıllı Lövhə Optimallaşdırması:</strong> Barmaq və qələmə həssas qarşılıqlı əlaqə xüsusiyyətləri ilə ağıllı lövhə aparatlarında qüsursuz istifadə.",
+        modal_jedi_li2: "<strong>Təhsil Yönümlü İnterfeys:</strong> Sinif daxili təqdimatlar, dərs məzmunları və interaktiv tətbiqlər üçün asan əlçatan xüsusi interfeys dizaynı.",
+        modal_jedi_li3: "<strong>Jubatus Ekosistem İnteqrasiyası:</strong> Təhsil materialları və studiya alətləri ilə tam uyğun infrastruktur.",
+        modal_download_jedi: "📥 Jubatus Jedi (.ISO Yüklə)",
+        modal_backup_title: "Xyronix Backup V3 Pro - Əhatəli Alət Detalları",
+        modal_backup_p1: "Xyronix Backup V3 Pro, sistem fayllarınızı və şəxsi məlumatlarınızı təhlükəsiz qorumağınız üçün hazırlanmış inkişaf etmiş masaüstü ehtiyat nüsxə tətbiqidir.",
+        modal_backup_li1: "<strong>Ağıllı Delta Ehtiyat Nüsxəsi:</strong> Yalnız dəyişən məlumatları aşkar edərək ehtiyat nüsxə vaxtını və saxlama sahəsini minimuma endirir.",
+        modal_backup_li2: "<strong>Snapshot (Ani Görüntü) Sistemi:</strong> Müəyyən vaxt dövrlərindəki sistem vəziyyətlərini ani olaraq saxlama və bərpa etmə.",
+        modal_backup_li3: "<strong>İnkişaf etmiş Nəzarət:</strong> Fasilə, ləğv etmə və ətraflı disk sahəsi analizi xüsusiyyətləri.",
+        modal_backup_li4: "<strong>Müasir Tkinter İnterfeysi:</strong> Sistemlə uyğun tünd tema dizaynı.",
+        modal_download_backup: "📥 Xyronix Backup V3 Pro (Drive Qovluğunu Yüklə)",
+        footer_rights: "Bütün hüquqlar qorunur.",
+        footer_leader: "Layihə Rəhbəri: Eren Mut",
+        footer_contributor: "Töhfə Verən: İnanç İnce",
+        mob_platforms: "Platformalar",
+        mob_language: "Dil",
+        mob_links: "Keçidlər"
+      }
+    };
 
-                <h3>Öne Çıkan Özellikler</h3>
-                <ul>
-                    <li><strong>Akıllı Delta Yedekleme:</strong> Yalnızca değişen verileri algılayarak yedekleme süresini ve depolama alanını minimuma indirir.</li>
-                    <li><strong>Snapshot (Anlık Görüntü) Sistemi:</strong> Belirli zaman dilimlerindeki sistem durumlarını anlık olarak saklama ve geri yükleme.</li>
-                    <li><strong>Gelişmiş Denetim:</strong> Duraklatma, iptal etme ve detaylı disk alanı analizi özellikleri.</li>
-                    <li><strong>Modern Tkinter Arayüzü:</strong> Sistemle uyumlu koyu tema tasarımı.</li>
-                </ul>
+    /* ============================================================
+       2. DİL DEĞİŞTİRME
+       ============================================================ */
+    let currentLang = localStorage.getItem('xyronix-lang') || 'tr';
 
-                <a href="https://drive.google.com/drive/folders/1lKWhNLU8EkmZLATCpRmG8ukrIAmUiyIn?usp=drive_link" class="modal-download-btn" target="_blank">📥 Xyronix Backup V3 Pro (Drive Klasörünü İndir)</a>
-            </div>
-        </div>
-    </div>
+    function setLanguage(lang) {
+      if (!translations[lang]) return;
+      currentLang = lang;
+      localStorage.setItem('xyronix-lang', lang);
+      document.documentElement.lang = lang;
 
-    <footer>
-        <p>&copy; 2026 Xyronix Studios — Tüm hakları saklıdır. | Proje Lideri: Eren Mut</p>
-    </footer>
-
-    <script>
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+      // Tüm data-i18n elementlerini güncelle
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          // innerHTML kullan çünkü bazı çeviriler <code> veya <strong> içeriyor
+          el.innerHTML = translations[lang][key];
         }
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            document.body.style.overflow = 'auto';
+      });
+
+      // Dil butonlarının aktif durumunu güncelle
+      document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+    }
+
+    // Dil butonlarına tıklama olayı
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setLanguage(this.getAttribute('data-lang'));
+      });
+    });
+
+    // Sayfa yüklendiğinde kayıtlı dili uygula
+    setLanguage(currentLang);
+
+    /* ============================================================
+       3. TEMA DEĞİŞTİRME
+       ============================================================ */
+    const themeToggle = document.getElementById('themeToggle');
+    const brandLogo = document.getElementById('brandLogo');
+    const mobileBrandLogo = document.getElementById('mobileBrandLogo');
+
+    // Logo dosya yolları
+    const LOGO_DARK = 'Xyronix-OS-Logo-Black.png';  // Koyu tema için
+    const LOGO_LIGHT = 'Xyronix-OS-Logo-White.png'; // Açık tema için
+
+    let currentTheme = localStorage.getItem('xyronix-theme') || 'dark';
+
+    function applyTheme(theme) {
+      currentTheme = theme;
+      localStorage.setItem('xyronix-theme', theme);
+
+      if (theme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        // Açık temada beyaz logo kullan
+        if (brandLogo) brandLogo.src = LOGO_LIGHT;
+        if (mobileBrandLogo) mobileBrandLogo.src = LOGO_LIGHT;
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        // Koyu temada siyah logo kullan
+        if (brandLogo) brandLogo.src = LOGO_DARK;
+        if (mobileBrandLogo) mobileBrandLogo.src = LOGO_DARK;
+      }
+    }
+
+    // Tema değiştirme butonu
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function() {
+        applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    // Sayfa yüklendiğinde kayıtlı temayı uygula
+    applyTheme(currentTheme);
+
+    /* ============================================================
+       4. MODAL FONKSİYONLARI
+       ============================================================ */
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    function outsideClose(event, modalId) {
+      if (event.target.id === modalId) {
+        closeModal(modalId);
+      }
+    }
+
+    // ESC tuşu ile modal kapatma
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(function(modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        });
+      }
+    });
+
+    /* ============================================================
+       5. MOBİL MENÜ
+       ============================================================ */
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+    const mobileMenuScrim = document.getElementById('mobileMenuScrim');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+    function openMobileMenu() {
+      mobileMenuDrawer.classList.add('active');
+      mobileMenuScrim.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      mobileMenuToggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMobileMenu() {
+      mobileMenuDrawer.classList.remove('active');
+      mobileMenuScrim.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    if (mobileMenuToggle) mobileMenuToggle.addEventListener('click', openMobileMenu);
+    if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+    if (mobileMenuScrim) mobileMenuScrim.addEventListener('click', closeMobileMenu);
+
+    // Mobil menü linklerine tıklanınca menüyü kapat
+    document.querySelectorAll('.mobile-menu-link[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        closeMobileMenu();
+      });
+    });
+
+    /* ============================================================
+       6. SUB-NAV AKTİF TAKİBİ
+       ============================================================ */
+    const subnavLinks = document.querySelectorAll('.subnav-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    function updateActiveSubnav() {
+      let current = '';
+      sections.forEach(function(section) {
+        const sectionTop = section.offsetTop - 150;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
         }
-        function outsideClose(event, modalId) {
-            if (event.target.id === modalId) {
-                closeModal(modalId);
-            }
+      });
+
+      subnavLinks.forEach(function(link) {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
         }
-    </script>
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveSubnav);
+    updateActiveSubnav();
+
+    /* ============================================================
+       7. NAV LİNK AKTİF TAKİBİ
+       ============================================================ */
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    function updateActiveNav() {
+      let current = '';
+      sections.forEach(function(section) {
+        const sectionTop = section.offsetTop - 200;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(function(link) {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav();
+  </script>
+
 </body>
 </html>
